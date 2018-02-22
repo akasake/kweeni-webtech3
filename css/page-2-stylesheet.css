@@ -1,0 +1,15 @@
+header{
+  background-color: #494e61;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 3em;
+}
+
+.logo{
+  align-self: center;
+}
+
+.user{
+  align-self: center;
+}
