@@ -1,15 +1,17 @@
 header{
-  background-color: #494e61;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 5%;
-  height: 3em;
+    background-color: #494e61;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 3em;
 }
 
 .logo{
-  align-self: center;
+    align-self: center;
 }
 
 .user{
-  align-self: center;
+    align-self: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
