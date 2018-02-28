@@ -177,14 +177,18 @@ input{
 
 .commenter{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2em 8em;
     margin-top: 1em;
-    width: 11em;
     grid-gap: 0.7em;
 }
 
 .commenter p{
     align-self: center;
+}
+
+.responses .commenter{
+    justify-content: end;
+    justify-self: stretch;
 }
 
 footer{
