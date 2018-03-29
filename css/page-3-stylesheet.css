@@ -1,0 +1,242 @@
+*
+{
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.logout{
+    color: #FA5B33;
+}
+.OP{
+    color: #FA5B33;
+    font-weight: bold;
+}
+.container{
+    max-width: 800px;
+    margin: 0 auto;
+}
+header{
+    background-color: #494E61;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+}
+header img{
+    height: 40px;
+    border-radius: 5px;
+}
+img{
+    height: 30px;
+    border-radius: 5px;
+}
+.login_info{
+    display: grid;
+    text-align: right;
+    grid-gap: 5px;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: 18px 18px;
+}
+.login_info img{
+    grid-column: 2/3;
+    grid-row: 1/3;
+    
+}
+.login_info p{
+    margin: 0;
+    padding: 0;
+    color: #6C7289;
+    font-weight: bold;
+}
+.login_info_small{
+    display: grid;
+    text-align: right;
+    grid-gap: 5px;
+    grid-template-columns: 1fr 30px;
+    grid-template-rows: 14px 14px;
+    grid-column: 1/3;
+    grid-row: 1/2;
+    padding: 1em;
+    background-color: #FFF6F7;
+}
+.login_info_small img{
+    grid-column: 2/3;
+    grid-row: 1/3;
+    
+}
+.login_info_small p{
+    margin: 0;
+    padding: 0;
+    font-size: 0.8em;
+    align-self: center;
+    color: #FA5B33;
+}
+.question{
+    background-color: #FFF6F7;
+    height: 200px;
+    display: grid;
+    grid-template-rows: auto;
+    
+}
+h3{
+    align-self: center;
+    text-align: center;
+    font-size: 2em;
+    color: #FA5B33;
+}
+.likeout{
+    background-color: #FFEEF0;  
+}
+.like{
+    display: grid;
+    grid-template-columns: 1fr 3fr; 
+   
+}
+.liked_user_list{
+    display: grid;
+    grid-template-columns: repeat(9,20px);
+    grid-gap: 3px;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 1em;
+    
+}
+.liked_user_list img{
+    height: 20px;
+    padding: 0;
+    margin: 0;
+}
+.likecounter{
+    background-color: #F6E5E7;
+    height: 100px;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 1fr 1fr;
+}
+.likenr{
+    align-self: flex-end;
+    justify-self: center;
+}
+.user{
+    display: flex;     
+}
+.reply .user{
+    justify-self: end;
+}
+.user p{
+    margin: 0 0 0 1em;
+    align-self: center;
+    font-size: 0.8em
+}
+.comments{
+    display: grid;
+    grid-gap: 1em;
+}
+.reply_form{
+    justify-self: flex-end;
+    justify-content:flex-end; 
+    text-align: right;
+    grid-gap: 5px;
+}
+.reply{
+    width: 80%;
+    justify-self: flex-end;
+    justify-content: end; 
+    text-align: right;
+    grid-gap: 5px;
+}
+
+main{
+    padding: 2em;
+}
+.text_box{
+    border: 1px solid #F6F6F6;
+    border-radius: 4px;
+    padding: 1em;
+    display: grid;
+}
+input{
+   width: 100%;
+}
+.answer_input{
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    background-color: #434757;
+    width: 100%;
+    
+    margin-bottom: 5em;
+    padding: 1.5em;
+}
+#formpic{
+    border-radius: 0;
+    height: 2em;
+}
+.answer_input input{
+    height: 2em;
+    border: none;
+}
+.reply_box{
+    background-color: #F6F6F6;
+    width: 80%;
+    display: grid;
+    justify-self: flex-end;
+    justify-content:center; 
+    padding: 20px;
+}
+.reply_box form{
+    text-align: center;
+}
+.button{
+    text-decoration: none;
+    color: white;
+    background-color: #3B1CFF;
+    text-align: center;
+    padding: 0.5em 1em;  
+    height: 2em;
+    border: none;
+    grid-column: 1/3;
+    width: 200px;
+    justify-self: center;
+    margin-top: 1em
+}
+
+@media (min-width: 600px) {
+    .reply_box{
+        width: 500px;}
+    input{
+        width: 100%;
+    }
+    .reply{
+        width: 500px;}
+    .reply_form{
+        width: 450px;}
+    .answer_input{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70px;
+    }
+    .answer_input input{
+        width: 400px
+    }
+    .button{
+        margin-top: 0;
+    }
+    .like{
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr; 
+    align-items: center;
+    height: 100px;
+    }
+    .login_info_small{
+         background-color: #FFEEF0;
+        grid-column: 3/4;
+    }
+    .likecounter{
+        grid-column: 1/2;
+    }
+    .liked_user_list{
+        grid-column: 2/3;
+        justify-content: flex-start;
+    }
+
+}
