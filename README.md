@@ -14,7 +14,3 @@
 > - [HTML2Jade](http://html2jade.org/)
 
 ##### Step 3 -> place the newly created files in the right directory and delete the old files
-
-![alt text](https://i.imgur.com/RSWEEdd.png "Fetch origin and Pull")
-
-##### Step 4 -> When the feature is ready and you are sure that everything is working, merge your feature branch with the master branch:
