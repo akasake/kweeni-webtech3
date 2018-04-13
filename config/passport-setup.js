@@ -17,7 +17,7 @@ passport.deserializeUser((id, done) => {
 passport.use(
     new FacebookStrategy({
         // options for the google strategy
-        callbackURL: 'https://kweeni.herokuapp.com//auth/facebook/redirect',
+        callbackURL: 'https://kweeni.herokuapp.com/auth/facebook/redirect',
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret
     }, (accessToken, refreshToken, profile, done) => {
