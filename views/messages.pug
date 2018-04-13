@@ -5,10 +5,10 @@ html(lang='en')
     meta(http-equiv='x-ua-compatible', content='ie=edge')
     title Home
     meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(href='https://fonts.googleapis.com/css?family=Slabo+13px|Ultra', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/reset.css')
     link(rel='stylesheet', href='/stylesheets/normalize.css')
     link(rel='stylesheet', href='/stylesheets/kweeni.css')
-    link(href='https://fonts.googleapis.com/css?family=Slabo+13px|Ultra', rel='stylesheet')
   body
     block content
     header.header
@@ -17,7 +17,7 @@ html(lang='en')
           img#logo(src='images/logo.svg', alt='logo_KWEENI')
       .header__user
         span Anneke Kodeur
-        a(href='auth/logout') Log uit
+        a(href='/auth/logout') Log uit
         img(src='images/user12.png', alt='user')
     .ask
       h1 Iets kweeni hoe moeilijk? Stel hier je vraag.
