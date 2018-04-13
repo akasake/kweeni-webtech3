@@ -16,6 +16,16 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
     new FacebookStrategy({
+        clientID: keys.google.clientID,
+        clientSecret: keys.google.clientSecret,
+        callbackURL: "/auth/facebook/redirect"
+      },
+      function(accessToken, refreshToken, profile, cb) {
+        console.log(profile);
+      }
+    )
+    /*
+    new FacebookStrategy({
         // options for the google strategy
         callbackURL: '/auth/facebook/redirect',
         clientID: keys.google.clientID,
@@ -39,6 +49,6 @@ passport.use(
                     done(null, newUser);
                 });
             }
-        });*/
-    })
+        });
+    })*/
 )
