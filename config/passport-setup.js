@@ -18,7 +18,7 @@ passport.use(
     new FacebookStrategy({
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret,
-        callbackURL: "/auth/facebook/redirect"
+        callbackURL: "https://kweeni.herokuapp.com/auth/facebook/redirect"
       },
       function(accessToken, refreshToken, profile, cb) {
         console.log(profile);
