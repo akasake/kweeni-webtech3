@@ -1,10 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+
+const authCheck = (req, res, next) => {
+  if(!req.user) {
+    // if user is not logged in
+    res.redirect('/');
+  } else {
+    // if logged in
+    next();
+  }
+};
 
 /* GET messages page. */
-router.get('/', function(req, res, next) {
-  res.render('messages', { title: 'Kweeni' });
-  //res.send('respond with a resource');
+router.get('/', authCheck, (req, res, next) => {
+  res.render('messages', { username: req.user.username });
 });
 
 module.exports = router;
