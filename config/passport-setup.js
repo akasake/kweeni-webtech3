@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
+const FacebookStrategy = require('passport-facebook');
 const keys = require('./keys');
 const User = require('../models/user-model');
 
@@ -14,15 +15,16 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use(
-    new GoogleStrategy({
+    new FacebookStrategy({
         // options for the google strategy
-        callbackURL: '/auth/google/redirect',
+        callbackURL: '/auth/facebook/redirect',
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret
     }, (accessToken, refreshToken, profile, done) => {
+        console.log(profile);
         // passport callback function
         // check if user already exists in our db
-        User.findOne({googleId: profile.id}).then((currentUser) => {
+        /*User.findOne({googleId: profile.id}).then((currentUser) => {
             if(currentUser) {
                 // already have the user
                 console.log('user is: ', currentUser);
@@ -37,6 +39,6 @@ passport.use(
                     done(null, newUser);
                 });
             }
-        });
+        });*/
     })
 )

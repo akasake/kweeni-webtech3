@@ -9,12 +9,12 @@ router.get('/logout', (req, res) => {
 });
 
 // auth with google
-router.get('/google', passport.authenticate('google', {
+router.get('/facebook', passport.authenticate('facebook', {
     scope: ['profile']
 }));
 
 // callback route for google to redirect to
-router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+router.get('/facebook/redirect', passport.authenticate('facebook'), (req, res) => {
     res.redirect('/messages/');
 });
 
