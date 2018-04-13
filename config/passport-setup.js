@@ -30,7 +30,7 @@ passport.use(
                 done(null, currentUser);
             } else {
                 // if not create user in our db
-                new User({
+                ({
                     facebookId: profile.id,
                     firstName: profile.first_name,
                     lastName: profile.last_name
