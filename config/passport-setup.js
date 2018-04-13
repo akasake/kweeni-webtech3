@@ -16,25 +16,14 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
     new FacebookStrategy({
-        clientID: keys.google.clientID,
-        clientSecret: keys.google.clientSecret,
-        callbackURL: "https://kweeni.herokuapp.com/auth/facebook/redirect"
-      },
-      function(accessToken, refreshToken, profile, cb) {
-        console.log(profile);
-      }
-    )
-    /*
-    new FacebookStrategy({
         // options for the google strategy
-        callbackURL: '/auth/facebook/redirect',
+        callbackURL: 'https://kweeni.herokuapp.com//auth/facebook/redirect',
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret
     }, (accessToken, refreshToken, profile, done) => {
-        console.log(profile);
         // passport callback function
         // check if user already exists in our db
-        /*User.findOne({googleId: profile.id}).then((currentUser) => {
+        User.findOne({googleId: profile.id}).then((currentUser) => {
             if(currentUser) {
                 // already have the user
                 console.log('user is: ', currentUser);
@@ -42,7 +31,6 @@ passport.use(
             } else {
                 // if not create user in our db
                 new User({
-                    username: profile.displayName,
                     googleId: profile.id
                 }).save().then((newUser) => {
                     console.log('new user created: ' + newUser);
@@ -50,5 +38,5 @@ passport.use(
                 });
             }
         });
-    })*/
+    })
 )
