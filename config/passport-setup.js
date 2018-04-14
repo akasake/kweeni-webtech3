@@ -1,5 +1,4 @@
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20');
 const FacebookStrategy = require('passport-facebook');
 const keys = require('./keys');
 const User = require('../models/user-model');
@@ -16,10 +15,10 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
     new FacebookStrategy({
-        // options for the google strategy
+        // options for the facebook strategy
         callbackURL: 'https://kweeni.herokuapp.com/auth/facebook/redirect',
-        clientID: keys.google.clientID,
-        clientSecret: keys.google.clientSecret
+        clientID: keys.facebook.clientID,
+        clientSecret: keys.facebook.clientSecret
     }, (accessToken, refreshToken, profile, done) => {
         // passport callback function
         // check if user already exists in our db

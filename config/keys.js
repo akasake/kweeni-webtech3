@@ -1,7 +1,7 @@
 // add this file to .gitignore
 
 module.exports = {
-    google: {
+    facebook: {
         clientID: '418768698567363',
         clientSecret: '4e1bc14c76ecb88af7d5125324e412a6'
     },
