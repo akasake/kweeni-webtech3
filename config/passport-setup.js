@@ -3,7 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20');
 const FacebookStrategy = require('passport-facebook');
 const keys = require('./keys');
 const User = require('../models/user-model');
-
+/*
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
@@ -13,7 +13,7 @@ passport.deserializeUser((id, done) => {
         done(null, user);
     });
 });
-
+*/
 passport.use(
     new FacebookStrategy({
         // options for the google strategy

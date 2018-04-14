@@ -20,16 +20,16 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
+/*
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [keys.session.cookieKey]
-}));
-
+}));*/
+/*
 // initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
-
+*/
 // connect to mongodb
 mongoose.connect(keys.mongodb.dbURI, {dbName: "kweeni"}, () => {
   console.log('connected to mongodb');
