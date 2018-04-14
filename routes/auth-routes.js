@@ -10,7 +10,7 @@ router.get('/logout', (req, res) => {
 
 // auth with google
 router.get('/facebook', passport.authenticate('facebook', {
-    
+    scope: ['email']
 }));
 
 // callback route for google to redirect to
