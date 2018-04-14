@@ -25,7 +25,9 @@ passport.use(
         // check if user already exists in our db
         ({
             facebookId: profile
-        }).save();
+        }).save().then((newUser) => {
+            console.log('new user created: ' + newUser);
+        });
         /*User.findOne({facebookId: profile.id}).then((currentUser) => {
             if(currentUser) {
                 // already have the user
