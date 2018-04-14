@@ -32,7 +32,8 @@ passport.use(
                 new User({
                     facebookId: profile.id,
                     username: profile.displayName,
-                    any: profile
+                    any: profile,
+                    thumbnail: profile.photos[0].value
                 }).save().then((newUser) => {
                     console.log('new user created: ' + newUser);
                     done(null, newUser);
