@@ -13,7 +13,10 @@ const authCheck = (req, res, next) => {
 
 /* GET messages page. */
 router.get('/', authCheck, (req, res, next) => {
-  res.render('messages', { username: req.user.username });
+  res.render('messages', { 
+    username: req.user.username,
+    picture: req.user.picture
+  });
 });
 
 module.exports = router;
