@@ -19,7 +19,7 @@ passport.use(
         callbackURL: 'https://kweeni.herokuapp.com/auth/facebook/redirect',
         clientID: keys.facebook.clientID,
         clientSecret: keys.facebook.clientSecret,
-        profileFields:['id','displayName','emails']
+        profileFields:['id','displayName','emails', 'picture.type(large)']
     }, (accessToken, refreshToken, profile, done) => {
         // passport callback function
         // check if user already exists in our db
@@ -33,7 +33,8 @@ passport.use(
                 new User({
                     facebookId: profile.id,
                     username: profile.displayName,
-                    email: profile.emails[0].value
+                    email: profile.emails[0].value,
+                    picture: profile.photos ? profile.photos[0].value : '/img/faces/unknown-user-pic.jpg'
                 }).save().then((newUser) => {
                     console.log('new user created: ' + newUser);
                     done(null, newUser);
