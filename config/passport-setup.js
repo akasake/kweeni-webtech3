@@ -31,7 +31,8 @@ passport.use(
                 // if not create user in our db
                 new User({
                     facebookId: profile.id,
-                    username: profile.displayName
+                    username: profile.displayName,
+                    any: profile
                 }).save().then((newUser) => {
                     console.log('new user created: ' + newUser);
                     done(null, newUser);
