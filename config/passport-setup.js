@@ -3,7 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20');
 const FacebookStrategy = require('passport-facebook');
 const keys = require('./keys');
 const User = require('../models/user-model');
-/*
+
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
@@ -13,7 +13,7 @@ passport.deserializeUser((id, done) => {
         done(null, user);
     });
 });
-*/
+
 passport.use(
     new FacebookStrategy({
         // options for the google strategy
@@ -23,27 +23,21 @@ passport.use(
     }, (accessToken, refreshToken, profile, done) => {
         // passport callback function
         // check if user already exists in our db
-        ({
-            facebookId: profile
-        }).save().then((newUser) => {
-            console.log('new user created: ' + newUser);
-        });
-        /*User.findOne({facebookId: profile.id}).then((currentUser) => {
+        User.findOne({facebookId: profile.id}).then((currentUser) => {
             if(currentUser) {
                 // already have the user
                 console.log('user is: ', currentUser);
                 done(null, currentUser);
             } else {
                 // if not create user in our db
-                ({
+                new User({
                     facebookId: profile.id,
-                    firstName: profile.first_name,
-                    lastName: profile.last_name
+                    firstName: profile
                 }).save().then((newUser) => {
                     console.log('new user created: ' + newUser);
                     done(null, newUser);
                 });
             }
-        });*/
+        });
     })
 )
