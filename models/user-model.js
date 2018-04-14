@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     facebookId: String,
-    firstName: Schema.Types.Mixed
+    username: String
 });
 
 const User = mongoose.model('user', userSchema);
