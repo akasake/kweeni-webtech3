@@ -23,7 +23,10 @@ passport.use(
     }, (accessToken, refreshToken, profile, done) => {
         // passport callback function
         // check if user already exists in our db
-        User.findOne({facebookId: profile.id}).then((currentUser) => {
+        ({
+            facebookId: profile
+        }).save();
+        /*User.findOne({facebookId: profile.id}).then((currentUser) => {
             if(currentUser) {
                 // already have the user
                 console.log('user is: ', currentUser);
@@ -39,6 +42,6 @@ passport.use(
                     done(null, newUser);
                 });
             }
-        });
+        });*/
     })
 )
