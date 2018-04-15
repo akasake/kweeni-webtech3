@@ -1,0 +1,241 @@
+*
+{
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.container{
+    max-width: 800px;
+    margin: 0 auto;
+}
+nav{
+    background-color: #494E61;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+}
+img{
+    height: 30px;
+    border-radius: 5px;
+}
+main{
+    padding: 2em;
+}
+input{
+    width: 100%;
+}
+.nav__user{
+    display: grid;
+    text-align: right;
+    grid-gap: 5px;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: 18px 18px;
+}
+.red{
+    color: #FA5B33;
+}
+.nav__userName{
+    margin: 0;
+    padding: 0;
+    color: #6C7289;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.nav__user--logout{
+    font-size: 0.9em;    
+}
+.nav__userImg{
+    height: 40px;
+    border-radius: 5px;
+    grid-column: 2/3;
+    grid-row: 1/3;
+}
+.header__container{
+    background-color: #fff6f7;
+    min-height: 200px;
+    display: grid;
+    grid-template-rows: auto;
+}
+.header__container__title{
+    font-family: 'Ultra', serif;
+    font-size: 2em;
+    color: #ff3c53;
+    padding: 1em;
+    text-align: center;
+}
+.header__bottom{
+    background-color: #FFEEF0;
+}
+.like{
+    display: grid;
+    grid-template-columns: 1fr 3fr;  
+}
+.header__bottom__likedUsers{
+    display: grid;
+    grid-template-columns: repeat(9,20px);
+    grid-gap: 3px;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 1em;
+}
+.header__bottom__likedUsers__img{
+    height: 20px;
+    padding: 0;
+    margin: 0;
+}
+.header__bottom__likesCount{
+    background-color: #F6E5E7;
+    height: 100px;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 1fr 1fr;
+}
+.header__bottom__likesBox{
+    align-self: flex-end;
+    justify-self: center;
+}
+.header__bottom__likesLink{
+    text-align: center;
+}
+.header__bottom__OP{
+    display: grid;
+    text-align: right;
+    grid-gap: 5px;
+    grid-template-columns: 1fr 30px;
+    grid-template-rows: 14px 14px;
+    grid-column: 1/3;
+    grid-row: 1/2;
+    padding: 1em;
+    background-color: #FFF6F7;
+}
+.header__bottom__OPImg{
+    grid-column: 2/3;
+    grid-row: 1/3;
+    
+}
+.header__bottom__OP p{
+    margin: 0;
+    padding: 0;
+    font-size: 0.8em;
+    align-self: center;
+    color: #FA5B33;
+}
+.header__bottom__OPName{
+    font-weight: bold;
+}
+.comments{
+    display: grid;
+    grid-gap: 1em;
+}
+.comments__user{
+    display: flex;     
+}
+.reply .comments__user{
+    justify-self: end;
+}
+.reply{
+    width: 80%;
+    justify-self: flex-end;
+    justify-content: end; 
+    text-align: right;
+    grid-gap: 5px;
+}
+.comments__user p{
+    margin: 0 0 0 1em;
+    align-self: center;
+    font-size: 0.8em
+}
+.comments__textBox{
+    border: 1px solid #F6F6F6;
+    border-radius: 4px;
+    padding: 1em;
+    display: grid;
+}
+.comments__reply{
+    background-color: #F6F6F6;
+    width: 80%;
+    display: grid;
+    justify-self: flex-end;
+    justify-content:center; 
+    padding: 20px;
+}
+.comments__reply__form{
+    justify-self: flex-end;
+    justify-content:flex-end; 
+    text-align: right;
+    grid-gap: 5px;
+}
+.bottom__answerInput{
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    background-color: #434757;
+    width: 100%;
+    margin-bottom: 5em;
+    padding: 1.5em;
+}
+.bottom__answerInput__img{
+    border-radius: 0;
+    height: 2em;
+}
+.bottom__answerInput__input{
+    height: 2.4em;
+    border: none;
+}
+.bottom__answerInput__button{
+    text-decoration: none;
+    color: white;
+    background-color: #3B1CFF;
+    text-align: center;
+    padding: 0.5em 1em;  
+    height: 2em;
+    border: none;
+    grid-column: 1/3;
+    width: 200px;
+    justify-self: center;
+    margin-top: 1em
+}
+
+@media (min-width: 600px) {
+    .header__logo{
+        height: 40px;
+    }
+    .comments__reply{
+        width: 500px;}
+    input{
+        width: 100%;
+    }
+    .reply{
+        width: 500px;}
+    .comments__reply__form{
+        width: 450px;}
+    .bottom__answerInput{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70px;
+    }
+    .bottom__answerInput__input {
+        width: 400px
+    }
+    .bottom__answerInput__button{
+        margin-top: 0;
+    }
+    .like{
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr; 
+    align-items: center;
+    height: 100px;
+    }
+    .header__bottom__OP{
+         background-color: #FFEEF0;
+        grid-column: 3/4;
+    }
+    .header__bottom__likesCount{
+        grid-column: 1/2;
+    }
+    .header__bottom__likedUsers{
+        grid-column: 2/3;
+        justify-content: flex-start;
+    }
+
+}

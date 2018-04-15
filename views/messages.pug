@@ -1,0 +1,129 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    title Home
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(href='https://fonts.googleapis.com/css?family=Slabo+13px|Ultra', rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/reset.css')
+    link(rel='stylesheet', href='/stylesheets/normalize.css')
+    link(rel='stylesheet', href='/stylesheets/kweeni.css')
+  body
+    block content
+    header.header
+      .header__logo
+        a(href='/')
+          img#logo(src='/images/logo.svg', alt='logo_KWEENI')
+      .header__user
+        span=username
+        a(href='/auth/logout') Log uit
+        img(src=picture, alt='user')
+    .ask
+      h1 Iets kweeni hoe moeilijk? Stel hier je vraag.
+      form(method='get')
+        input.search(type='text', name='question', placeholder='Wat is expressjs?', class="ask__input")
+        input.btn(type='submit', value='Nu vragen', class="ask__button")
+    .list
+      h3 Hot topics!
+      // 1
+      .topic
+        .topic__likes
+          img(src='/images/icon-cool.svg', alt='icon')
+          span x33
+        .topic__question
+          p Wat is ES6 en waarvoor dient het?
+        .topic__author
+          p Yves Dehipster
+          img(src='/images/user1.png', alt='avatar')
+      // 2
+      .topic
+        .topic__likes
+          img(src='/images/icon-cool.svg', alt='icon')
+          span x28
+        .topic__question
+          p Wat is het verschil tussen let, var en const?
+        .topic__author
+          p Jerold Venard
+          img(src='/images/user2.png', alt='avatar')
+      // 3
+      .topic
+        .topic__likes
+          img(src='/images/icon-cool.svg', alt='icon')
+          span x22
+        .topic__question
+          p Hoe werk Async-Await in nodejs?
+        .topic__author
+          p Kerrill Farrior
+          img(src='/images/user3.png', alt='avatar')
+      // 4
+      .topic
+        .topic__likes
+          img(src='/images/icon-cool.svg', alt='icon')
+          span x20
+        .topic__question
+          p Waarvoor dient mondogdb?
+        .topic__author
+          p Davin Macmullan
+          img(src='/images/user4.png', alt='avatar')
+      // 5
+      .topic
+        .topic__likes
+          img(src='/images/icon-cool.svg', alt='icon')
+          span x12
+        .topic__question
+          p Wat is expressjs?
+        .topic__author
+          p Averill Aspley
+          img(src='/images/user5.png', alt='avatar')
+      // 6
+      .topic
+        .topic__likes
+          img(src='/images/icon-cool.svg', alt='icon')
+          span x11
+        .topic__question
+          p Hoe kun je live iets updaten met sockets?
+        .topic__author
+          p Rodrique Jacox
+          img(src='/images/user6.png', alt='avatar')
+      // 7
+      .topic
+        .topic__likes
+          img(src='/images/icon-cool.svg', alt='icon')
+          span x6
+        .topic__question
+          p Wat is een goede reden om nodejs te gebruiken?
+        .topic__author
+          p Zebulon Channel
+          img(src='/images/user7.png', alt='avatar')
+      // 8
+      .topic
+        .topic__likes
+          img(src='/images/icon-cool.svg', alt='icon')
+          span x5
+        .topic__question
+          p zijn CSS variabelen te verkiezen boven sass?
+        .topic__author
+          p Chadwick Staheli
+          img(src='/images/user8.png', alt='avatar')
+      // 9
+      .topic
+        .topic__likes
+          img(src='/images/icon-cool.svg', alt='icon')
+          span x3
+        .topic__question
+          p Dit is een veel te lang topic om te zien hoe de app daarop re...
+        .topic__author
+          p Beau Colomy
+          img(src='/images/user9.png', alt='avatar')
+      // 10
+      .topic
+        .topic__likes
+          img(src='/images/icon-cool.svg', alt='icon')
+          span x0
+        .topic__question
+          p Wanneer gebruik je beter MongoDB ipv MySQL?
+        .topic__author
+          p Willey Mouse
+          img(src='/images/user10.png', alt='avatar')
+    a.more(href='') Toon 10 extra topics
