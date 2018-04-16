@@ -16,6 +16,8 @@
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth20": "^1.0.0",
+    "primus": "^7.1.1",
+    "ws": "^5.1.0",
     "pug": "2.0.0-beta11"
   }
 }
