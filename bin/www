@@ -20,6 +20,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+require('../primus/primus').kickstart(server); //1 primus
 
 /**
  * Listen on provided port, on all network interfaces.
