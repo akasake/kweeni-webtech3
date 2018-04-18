@@ -13,9 +13,9 @@ html(lang='en')
       nav
         img.header__logo(src='./images/logohead.png', alt='logo')
         .nav__user
-          p.nav__userName Anneke Kodeur
+          p.nav__userName=username
           a.nav__user--logout.red(href='#') Log uit
-          img.nav__userImg(src='./images/user1.png', alt='profile pic')
+          img.nav__userImg(src=picture, alt='profile pic')
       .header__container
         h3.header__container__title "Wat is een express.js en waarvoor dient het?"
       .header__bottom
