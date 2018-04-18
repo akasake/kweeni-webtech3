@@ -9,10 +9,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require('passport');
+const bodyParser= require('body-parser');
 
 const indexRouter = require('./routes/index');
-const messagesRouter = require('./routes/messages');
-const messageDetailsRouter = require('./routes/message-details');
+const kweeniRouter = require('./routes/kweeni');
 
 const app = express();
 
@@ -21,13 +21,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(cookieSession({
-  maxAge: 24 * 60 * 60 * 1000,
+  maxAge: 40 * 24 * 60 * 60 * 1000,
   keys: [keys.session.cookieKey]
 }));
 
 // initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 // connect to mongodb
 mongoose.connect(keys.mongodb.dbURI, {dbName: "kweeni"}, () => {
@@ -43,8 +46,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 // set up routes
 app.use('/', indexRouter);
 app.use('/auth', authRoutes);
-app.use('/messages', messagesRouter);
-app.use('/message-details', messageDetailsRouter);
+app.use('/kweeni', kweeniRouter);
+
+// GET messege details page with the user id
+app.get('/kweeni/:id', function(req, res, next) {
+  res.render('kweeni-details', { 
+    username: req.user.username,
+    picture: req.user.picture 
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

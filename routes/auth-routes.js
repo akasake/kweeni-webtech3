@@ -15,7 +15,7 @@ router.get('/facebook', passport.authenticate('facebook', {
 
 // callback route for google to redirect to
 router.get('/facebook/redirect', passport.authenticate('facebook'), (req, res) => {
-    res.redirect('/messages/');
+    res.redirect('/kweeni/');
 });
 
 module.exports = router;

@@ -3,7 +3,7 @@ html(lang='en')
   head
     meta(charset='utf-8')
     meta(http-equiv='x-ua-compatible', content='ie=edge')
-    title Home
+    title=title
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(href='https://fonts.googleapis.com/css?family=Slabo+13px|Ultra', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/reset.css')
@@ -21,7 +21,7 @@ html(lang='en')
         img(src=picture, alt='user')
     .ask
       h1 Iets kweeni hoe moeilijk? Stel hier je vraag.
-      form(method='get')
+      form(method='post' action='/kweeni')
         input.search(type='text', name='question', placeholder='Wat is expressjs?', class="ask__input")
         input.btn(type='submit', value='Nu vragen', class="ask__button")
     .list
