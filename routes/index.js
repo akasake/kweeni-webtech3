@@ -1,9 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const User = require('../models/user-model');
+const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Kweeni' });
+  User.find({}, function(err, users) {
+    if(err) {
+      res.send("404");
+    } else {
+      res.render('index', { 
+        user1: users[0].picture
+        // user1: users[0].picture
+      });
+    }
+  });
 });
 
 module.exports = router;
