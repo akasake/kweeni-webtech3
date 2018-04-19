@@ -342,7 +342,7 @@ nav{
     justify-content: space-between;
     padding: 10px 30px;
 }
-.comments__userImg img, .header__bottom__OPImg img, .header__bottom__likesBox img {
+.page3 img {
     height: 30px;
     border-radius: 5px;
 }
