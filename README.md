@@ -16,11 +16,14 @@
 ##### Step 3 -> place the newly created files in the right directory and delete the old files
 
 
+
+
 ### To do before 26-04-2018:
 
 ##### ! Recommended Visual Studio Code User Settings for this project !
 
-```"liveSassCompile.settings.formats":[
+```
+"liveSassCompile.settings.formats":[
         {
             "format": "compressed",
             "extensionName": ".css",
@@ -39,14 +42,14 @@
 
 ##### Components
 
->Re-usable parts of the page: 
+>Re-usable small parts of the page: 
 > - images
 > - buttons
 > - ...
 
 ##### Partials
 
->Largers parts of pages that are unique to this app: 
+>Larger chunks of pages that are unique to this app: 
 > - header
 > - title
 > - ...
