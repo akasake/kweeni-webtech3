@@ -7,7 +7,7 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(href='https://fonts.googleapis.com/css?family=Slabo+13px|Ultra', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/normalize.css')
-    link(rel='stylesheet', href='/stylesheets/kweeni.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block content
     header.header
@@ -19,7 +19,7 @@ html(lang='en')
         a(href='/auth/logout').header__user__logout Log uit
         img(src=picture, alt='user').header__user__img
     .ask
-      h1.ask__title Iets kweeni hoe moeilijk? Stel hier je vraag.
+      h3.ask__title Iets kweeni hoe moeilijk? Stel hier je vraag.
       form(method='post' action='/kweeni').ask__prompt
         input.ask__prompt__input(type='text', name='question', placeholder='Wat is expressjs?')
         input.ask__prompt__submit(type='submit', value='Nu vragen', class="ask__button")
