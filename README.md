@@ -14,3 +14,23 @@
 > - [HTML2Jade](http://html2jade.org/)
 
 ##### Step 3 -> place the newly created files in the right directory and delete the old files
+
+
+### To do before 26-04-2018:
+
+##### Recommended Visual Studio Code User Settings for this project
+
+```"liveSassCompile.settings.formats":[
+        {
+            "format": "compressed",
+            "extensionName": ".css",
+            "savePath": "/public/stylesheets"
+        }
+    ]
+```
+
+##### Theme
+
+##### Components
+
+##### Partials
