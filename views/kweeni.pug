@@ -6,7 +6,6 @@ html(lang='en')
     title=title
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(href='https://fonts.googleapis.com/css?family=Slabo+13px|Ultra', rel='stylesheet')
-    link(rel='stylesheet', href='/stylesheets/reset.css')
     link(rel='stylesheet', href='/stylesheets/normalize.css')
     link(rel='stylesheet', href='/stylesheets/kweeni.css')
   body
@@ -16,111 +15,101 @@ html(lang='en')
         a(href='/')
           img#logo(src='/images/logo.svg', alt='logo_KWEENI')
       .header__user
-        span=username
-        a(href='/auth/logout') Log uit
-        img(src=picture, alt='user')
+        span.header__user=username
+        a(href='/auth/logout').header__user__logout Log uit
+        img(src=picture, alt='user').header__user__img
     .ask
-      h1 Iets kweeni hoe moeilijk? Stel hier je vraag.
-      form(method='post' action='/kweeni')
-        input.search(type='text', name='question', placeholder='Wat is expressjs?', class="ask__input")
-        input.btn(type='submit', value='Nu vragen', class="ask__button")
+      h1.ask__title Iets kweeni hoe moeilijk? Stel hier je vraag.
+      form(method='post' action='/kweeni').ask__prompt
+        input.ask__prompt__input(type='text', name='question', placeholder='Wat is expressjs?')
+        input.ask__prompt__submit(type='submit', value='Nu vragen', class="ask__button")
     .list
-      h3 Hot topics!
-      // 1
+      h3.list__title Hot topics!
       .topic
         .topic__likes
-          img(src='/images/icon-cool.svg', alt='icon')
-          span x33
+          img(src='/images/icon-cool.svg', alt='icon').topic__likes__icon
+          span.topic__likes__count x33
         .topic__question
           p Wat is ES6 en waarvoor dient het?
         .topic__author
           p Yves Dehipster
           img(src='/images/user1.png', alt='avatar')
-      // 2
       .topic
         .topic__likes
-          img(src='/images/icon-cool.svg', alt='icon')
-          span x28
+          img(src='/images/icon-cool.svg', alt='icon').topic__likes__icon
+          span.topic__likes__count x28
         .topic__question
           p Wat is het verschil tussen let, var en const?
         .topic__author
           p Jerold Venard
           img(src='/images/user2.png', alt='avatar')
-      // 3
       .topic
         .topic__likes
-          img(src='/images/icon-cool.svg', alt='icon')
-          span x22
+          img(src='/images/icon-cool.svg', alt='icon').topic__likes__icon
+          span.topic__likes__count x22
         .topic__question
           p Hoe werk Async-Await in nodejs?
         .topic__author
           p Kerrill Farrior
           img(src='/images/user3.png', alt='avatar')
-      // 4
       .topic
         .topic__likes
-          img(src='/images/icon-cool.svg', alt='icon')
-          span x20
+          img(src='/images/icon-cool.svg', alt='icon').topic__likes__icon
+          span.topic__likes__count x20
         .topic__question
           p Waarvoor dient mondogdb?
         .topic__author
           p Davin Macmullan
           img(src='/images/user4.png', alt='avatar')
-      // 5
       .topic
         .topic__likes
-          img(src='/images/icon-cool.svg', alt='icon')
-          span x12
+          img(src='/images/icon-cool.svg', alt='icon').topic__likes__icon
+          span.topic__likes__count x12
         .topic__question
           p Wat is expressjs?
         .topic__author
           p Averill Aspley
           img(src='/images/user5.png', alt='avatar')
-      // 6
       .topic
         .topic__likes
-          img(src='/images/icon-cool.svg', alt='icon')
-          span x11
+          img(src='/images/icon-cool.svg', alt='icon').topic__likes__icon
+          span.topic__likes__count x11
         .topic__question
           p Hoe kun je live iets updaten met sockets?
         .topic__author
           p Rodrique Jacox
           img(src='/images/user6.png', alt='avatar')
-      // 7
       .topic
         .topic__likes
-          img(src='/images/icon-cool.svg', alt='icon')
-          span x6
+          img(src='/images/icon-cool.svg', alt='icon').topic__likes__icon
+          span.topic__likes__count x6
         .topic__question
           p Wat is een goede reden om nodejs te gebruiken?
         .topic__author
           p Zebulon Channel
           img(src='/images/user7.png', alt='avatar')
-      // 8
       .topic
         .topic__likes
-          img(src='/images/icon-cool.svg', alt='icon')
-          span x5
+          img(src='/images/icon-cool.svg', alt='icon').topic__likes__icon
+          span.topic__likes__count x5
         .topic__question
           p zijn CSS variabelen te verkiezen boven sass?
         .topic__author
           p Chadwick Staheli
           img(src='/images/user8.png', alt='avatar')
-      // 9
       .topic
         .topic__likes
-          img(src='/images/icon-cool.svg', alt='icon')
-          span x3
+          img(src='/images/icon-cool.svg', alt='icon').topic__likes__icon
+          span.topic__likes__count x3
         .topic__question
           p Dit is een veel te lang topic om te zien hoe de app daarop re...
         .topic__author
           p Beau Colomy
           img(src='/images/user9.png', alt='avatar')
-      // 10
       .topic
         .topic__likes
-          img(src='/images/icon-cool.svg', alt='icon')
-          span x0
+          img(src='/images/icon-cool.svg', alt='icon').topic__likes__icon
+          span.topic__likes__count x0
         .topic__question
           p Wanneer gebruik je beter MongoDB ipv MySQL?
         .topic__author

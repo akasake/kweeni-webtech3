@@ -37,24 +37,24 @@ h1, h3 {
   font-family: 'Helvetica', sans-serif;
 }
 
-.header__user span, .header__user a {
+.header__user__name, .header__user__logout {
   grid-column: 1/2;
   margin: 0;
   text-align: right;
 }
 
-.header__user span {
+.header__user__name {
   color: #8D95B1;
   font-size: 0.8em;
   font-weight: 600;
 }
 
-.header__user a {
+.header__user__logout {
   color: #E48F90;
   font-size: 0.7em;
 }
 
-.header__user img {
+.header__user__img {
   width: 35px;
   border-radius: 10px;
   grid-column: 2/-1;
@@ -69,7 +69,7 @@ h1, h3 {
   padding: 1.5em 0.5em;
 }
 
-.ask h1 {
+.ask__title {
   color: #F9502D;
   text-align: center;
   font-size: 2em;
@@ -81,7 +81,7 @@ h1, h3 {
   width: 60vw;
 }
 
-.ask form {
+.ask__prompt {
   display: grid;
   grid-template-columns: auto 250px auto;
   grid-template-rows: 60% 40%;
@@ -90,7 +90,7 @@ h1, h3 {
 }
 
 @media (min-width: 40em) {
-  .ask form {
+  .ask__prompt {
     display: grid;
     grid-template-columns: auto 250px auto;
     grid-template-rows: 60% 40%;
@@ -99,7 +99,7 @@ h1, h3 {
   }
 }
 
-.ask__input {
+.ask__prompt__input {
   grid-row: 1/span 1;
   grid-column: span 3;
   border: 5px solid #ECA3AB;
@@ -107,7 +107,7 @@ h1, h3 {
   padding: 0.8em 0.5em;
 }
 
-.ask__button {
+.ask__prompt__submit {
   grid-row: 2/3;
   grid-column: 2/3;
   text-align: center;
@@ -129,7 +129,7 @@ h1, h3 {
   grid-template-rows: repeat(11, 1fr);
 }
 
-.list h3 {
+.list__title {
   text-align: center;
   color: #4A4E5F;
   align-self: end;
@@ -153,13 +153,13 @@ h1, h3 {
   width: 70px;
 }
 
-.topic__likes img {
+.topic__likes__icon {
   justify-self: center;
   align-self: end;
   width: 20px;
 }
 
-.topic__likes span {
+.topic__likes__count {
   justify-self: center;
   align-self: center;
   font-size: 0.8em;
