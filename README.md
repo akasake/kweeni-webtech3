@@ -18,7 +18,7 @@
 
 ### To do before 26-04-2018:
 
-##### Recommended Visual Studio Code User Settings for this project
+##### ! Recommended Visual Studio Code User Settings for this project !
 
 ```"liveSassCompile.settings.formats":[
         {
@@ -31,6 +31,22 @@
 
 ##### Theme
 
+>Contains all variables: 
+> - colors
+> - fonts
+> - border radius
+> - ...
+
 ##### Components
 
+>Re-usable parts of the page: 
+> - images
+> - buttons
+> - ...
+
 ##### Partials
+
+>Largers parts of pages that are unique to this app: 
+> - header
+> - title
+> - ...
