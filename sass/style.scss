@@ -345,11 +345,6 @@
       margin: 0;
       padding: 1em;
   }
-  .header__bottom__likedUsers__img{
-      height: 20px;
-      padding: 0;
-      margin: 0;
-  }
   .header__bottom__likesCount{
       background-color: #F6E5E7;
       height: 100px;
@@ -411,11 +406,6 @@
       margin: 0 0 0 1em;
       align-self: center;
       font-size: $commentFontSize;
-  }
-  .comments__userImg{
-    width: 30px;
-    height: 30px;
-    border-radius: $smallBorderRadius;
   }
   .comments__textBox{
       border: 1px solid #F6F6F6;
@@ -562,13 +552,6 @@
   .header__user__logout {
     color: #E48F90;
     font-size: $commentFontSize;
-  }
-  
-  .header__user__img {
-    width: 35px;
-    border-radius: $largeBorderRadius;
-    grid-column: 2/-1;
-    grid-row: 1/-1;
   }
   
   /* Title and prompt */

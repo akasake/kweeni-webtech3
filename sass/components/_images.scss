@@ -13,6 +13,10 @@
     align-self: center;
 }
 
+.header__bottom__likesBox__emoji {
+    width: 20px;
+}
+
 // topic images
 .topic__author {
     grid-column: 3/4;
@@ -25,6 +29,31 @@
     justify-self: center;
     align-self: end;
     width: 20px;
+}
+
+// user images
+.header__user__img {
+    width: 35px;
+    border-radius: 8px;
+    grid-column: 2/-1;
+    grid-row: 1/-1;
+}
+
+.header__bottom__likedUsers__img {
+    height: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.comments__userImg--alignment {
+    grid-column: 2/3;
+    grid-row: 1/3;
+}
+
+.comments__userImg {
+    width: 30px;
+    height: 30px;
+    border-radius: $smallBorderRadius;
 }
 
 @media (min-width: 40em) {

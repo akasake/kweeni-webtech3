@@ -34,15 +34,17 @@
     grid-column-gap: 1em;
 }
 
-.topic__question p {
+.topic__question a {
     font-size: 0.9em;
     padding-left: 5px;
-    font-family: $textFontFamily, serif;
+    font-family: $textFontFamily;
+    text-decoration: none;
+    color: $darkgray;
 }
 
 .topic__author p {
     display: none;
-    font-family: $textFontFamily, serif;
+    font-family: $textFontFamily;
 }
 
 .topic__author img {
