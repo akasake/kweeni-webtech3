@@ -1,6 +1,6 @@
 // typo 
 $headingFontFamily: Ultra, serif;
-$textFontFamily: Slabo 13px, serif;
+$textFontFamily: 'Slabo 13px', serif;
 $linkFontFamily: Roboto, sans-serif;
 
 // colors
@@ -14,11 +14,15 @@ $hot: #FA5B33;
 // font-size
 $largeFontSize: 2.2em;
 $buttonFontSize: 1.1em;
-$h1FontSize: 2em;
-$h2FontSize: 1.5em;
+$largeHeadingFontSize: 2em;
+$mediumHeadingFontSize: 1.5em;
 $textFontSize: 1em;
+$largeTextFontSize: 1.3em;
 $commentFontSize: 0.8em;
 
 // border radius
 $smallBorderRadius: 4px;
 $largeBorderRadius: 8px;
+
+// container width
+$containerWidth: 1000px;
