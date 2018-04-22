@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const User = require('../models/user-model');
 const Question = require('../models/question-model');
+const slugify = require('slugify')
 const router = express.Router();
 
 const authCheck = (req, res, next) => {
@@ -27,13 +28,23 @@ router.post('/', (req, res) => {
   var username = req.user.username;
   var question = new Question({
     question: req.body.question,
+    slug: slugify(req.body.question, {
+      replacement: '-',    // replace spaces with replacement
+      remove: null,        // regex to remove characters
+      lower: true          // result in lower case
+    }),
+    likes: 0,
     author: req.user.id
   });
   question.save(function (err) {
     Question.find({}).populate('author')
     if (err) console.log(err);
   });
-  res.redirect('/kweeni/' + req.user.id)
+  res.redirect('/kweeni/' + slugify(req.body.question, {
+    replacement: '-',    // replace spaces with replacement
+    remove: null,        // regex to remove characters
+    lower: true          // result in lower case
+  }))
 });
 
 module.exports = router;

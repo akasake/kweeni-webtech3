@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require('passport');
 const bodyParser= require('body-parser');
+const Question = require('./models/question-model');
 
 const indexRouter = require('./routes/index');
 const kweeniRouter = require('./routes/kweeni');
@@ -49,10 +50,17 @@ app.use('/auth', authRoutes);
 app.use('/kweeni', kweeniRouter);
 
 // GET messege details page with the user id
-app.get('/kweeni/:id', function(req, res, next) {
-  res.render('kweeni-details', { 
-    username: req.user.username,
-    picture: req.user.picture 
+app.get('/kweeni/:question', function(req, res, next) {
+  Question.find({slug: req.params.question}, function(err, question) {
+    if(err) {
+      res.send("404");
+    } else {
+      res.render('kweeni-details', { 
+        username: req.user.username,
+        picture: req.user.picture,
+        question: question[0].question
+      });
+    }
   });
 });
 
