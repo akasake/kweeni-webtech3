@@ -3,6 +3,7 @@
 
 //load components
 @import 'components/images';
+@import 'components/buttons';
 
 //load partials
 @import 'partials/topics';
@@ -332,61 +333,6 @@
   input{
       width: 100%;
   }
-  .header__bottom{
-      background-color: #FFEEF0;
-  }
-  .like{
-      display: grid;
-      grid-template-columns: 1fr 3fr;  
-  }
-  .header__bottom__likedUsers{
-      display: grid;
-      grid-template-columns: repeat(9,20px);
-      grid-gap: 3px;
-      justify-content: flex-end;
-      margin: 0;
-      padding: 1em;
-  }
-  .header__bottom__likesCount{
-      background-color: #F6E5E7;
-      height: 100px;
-      display: grid;
-      justify-content: center;
-      grid-template-rows: 1fr 1fr;
-  }
-  .header__bottom__likesBox{
-      align-self: flex-end;
-      justify-self: center;
-  }
-  .header__bottom__likesLink{
-      text-align: center;
-  }
-  .header__bottom__OP{
-      display: grid;
-      text-align: right;
-      grid-gap: 5px;
-      grid-template-columns: 1fr 30px;
-      grid-template-rows: 14px 14px;
-      grid-column: 1/3;
-      grid-row: 1/2;
-      padding: 1em;
-      background-color: #FFF6F7;
-  }
-  .header__bottom__OPImg{
-      grid-column: 2/3;
-      grid-row: 1/3;
-      
-  }
-  .header__bottom__OP p{
-      margin: 0;
-      padding: 0;
-      font-size: $commentFontSize;
-      align-self: center;
-      color: #FA5B33;
-  }
-  .header__bottom__OPName{
-      font-weight: bold;
-  }
   .comments{
       display: grid;
       grid-gap: 1em;
@@ -494,18 +440,7 @@
       align-items: center;
       height: 100px;
       }
-      .header__bottom__OP{
-           background-color: #FFEEF0;
-          grid-column: 3/4;
-      }
-      .header__bottom__likesCount{
-          grid-column: 1/2;
-      }
-      .header__bottom__likedUsers{
-          grid-column: 2/3;
-          justify-content: flex-start;
-      }
-  
+      
   }
   
   /*******************************************************
@@ -513,10 +448,6 @@
   **************** KWEENI STYLE *************************
   ********************************************************
   *******************************************************/
-  
- 
-  
-  
   
   /* List */
   
