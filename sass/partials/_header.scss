@@ -1,0 +1,41 @@
+ /* header*/
+
+ .header {
+    background: $darkgray;
+  }
+  
+  .header__container {
+    max-width: $containerWidth;
+    padding: 0.8em;
+    display: grid;
+    grid-template-columns: minmax(130px, 1fr) 1fr;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .header__user {
+    display: grid;
+    grid-column-start: 2;
+    grid-column-gap: 0.5em;
+    grid-template-columns: 1fr 35px;
+    grid-template-rows: 1fr 1fr;
+    justify-items: end;
+    font-family: 'Helvetica', sans-serif;
+  }
+  
+  .header__user__name, .header__user__logout {
+    grid-column: 1/2;
+    margin: 0;
+    text-align: right;
+  }
+  
+  .header__user__name {
+    color: $middlegray;
+    font-size: $commentFontSize;
+    font-weight: 600;
+  }
+  
+  .header__user__logout {
+    color: $milennialpink;
+    font-size: $commentFontSize;
+  }
