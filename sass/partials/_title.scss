@@ -1,0 +1,64 @@
+/* Title and prompt */
+  
+.subheader {
+    background: lighten($milennialpink, 20%);
+    text-align: center;
+    padding: 1.5em 0.5em;
+  }
+  
+  .subheader__title {
+    color: $hot;
+    text-align: center;
+    font-size: $largeHeadingFontSize;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    margin: 0.5em auto;
+    padding: 0.5em;
+    width: 60vw;
+  }
+  
+  .subheader__prompt {
+    display: grid;
+    grid-template-columns: auto 250px auto;
+    grid-template-rows: 60% 40%;
+    grid-row-gap: 1em;
+    padding: 2%;
+  }
+  
+  @media (min-width: 40em) {
+    .subheader__prompt {
+      display: grid;
+      grid-template-columns: auto 250px auto;
+      grid-template-rows: 60% 40%;
+      grid-row-gap: 1.5em;
+      padding: 0 20%;
+    }
+  }
+  
+  .subheader__prompt__input {
+    display: block;
+    width: 60%;
+    font-size: $buttonFontSize;
+    font-family: 'Slabo 13px';
+    grid-row: 1/span 1;
+    grid-column: span 3;
+    border: 4px solid $milennialpink;
+    padding: 0.8em 0.5em;
+    margin: auto;
+    color: $darkgray;
+  }
+  
+  .subheader__prompt__submit {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    text-align: center;
+    font-family: 'Ultra', serif;
+    font-size: $largeTextFontSize;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: $primary;
+    color: #E5E1FF;
+    border-radius: $smallBorderRadius;
+    padding: 0.7em;
+    border: none;
+  }
