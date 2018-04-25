@@ -4,7 +4,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  User.find({}, function(err, users) {
+  /*User.find({}, function(err, users) {
     if(err) {
       res.send("404");
     } else {
@@ -13,7 +13,8 @@ router.get('/', function(req, res, next) {
         // user1: users[0].picture
       });
     }
-  });
+  });*/
+  res.render('index');
 });
 
 module.exports = router;
