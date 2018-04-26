@@ -1,0 +1,122 @@
+/* Title and prompt */
+  
+.subheader {
+    background: lighten($milennialpink, 20%);
+    text-align: center;
+    padding: 1.5em 0.5em;
+  }
+  
+  .subheader__title {
+    color: $hot;
+    text-align: center;
+    font-size: $largeHeadingFontSize;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    margin: 0.5em auto;
+    padding: 0.5em;
+    width: 60vw;
+  }
+  
+  .subheader__prompt {
+    display: grid;
+    grid-template-columns: auto 250px auto;
+    grid-template-rows: 60% 40%;
+    grid-row-gap: 1em;
+    padding: 2%;
+  }
+  
+  @media (min-width: 40em) {
+    .subheader__prompt {
+      display: grid;
+      grid-template-columns: auto 250px auto;
+      grid-template-rows: 60% 40%;
+      grid-row-gap: 1.5em;
+      padding: 0 20%;
+    }
+  }
+  
+  .subheader__prompt__input {
+    display: block;
+    width: 60%;
+    font-size: $buttonFontSize;
+    font-family: 'Slabo 13px';
+    grid-row: 1/span 1;
+    grid-column: span 3;
+    border: 4px solid $milennialpink;
+    padding: 0.8em 0.5em;
+    margin: auto;
+    color: $darkgray;
+  }
+
+   // for detail page
+
+   .header__bottom{
+    background-color: $pinkOffWhite;
+}
+.like{
+    display: grid;
+    grid-template-columns: 1fr 3fr;  
+}
+.header__bottom__likedUsers{
+    display: grid;
+    grid-template-columns: repeat(9,20px);
+    grid-gap: 3px;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 1em;
+}
+.header__bottom__likesCount{
+    background-color: #F6E5E7;
+    height: 100px;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 1fr 1fr;
+}
+.header__bottom__likesBox{
+    align-self: flex-end;
+    justify-self: center;
+}
+.header__bottom__likesLink{
+    text-align: center;
+}
+.header__bottom__OP{
+    display: grid;
+    text-align: right;
+    grid-gap: 5px;
+    grid-template-columns: 1fr 30px;
+    grid-template-rows: 14px 14px;
+    grid-column: 1/3;
+    grid-row: 1/2;
+    padding: 1em;
+    background-color: $pinkOffWhite;
+}
+.header__bottom__OPImg{
+    grid-column: 2/3;
+    grid-row: 1/3;
+    
+}
+.header__bottom__OP p{
+    margin: 0;
+    padding: 0;
+    font-size: $commentFontSize;
+    align-self: center;
+    color: #FA5B33;
+}
+.header__bottom__OPName{
+    font-weight: bold;
+}
+
+@media(min-width: 600px){
+    .header__bottom__OP{
+        background-color: #FFEEF0;
+       grid-column: 3/4;
+   }
+   .header__bottom__likesCount{
+       grid-column: 1/2;
+   }
+   .header__bottom__likedUsers{
+       grid-column: 2/3;
+       justify-content: flex-start;
+   }
+
+}
