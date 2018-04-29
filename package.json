@@ -18,9 +18,10 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth20": "^1.0.0",
     "primus": "^7.1.1",
+    "primus-emit": "^1.0.0",
+    "pug": "2.0.0-beta11",
     "slugify": "^1.2.9",
-    "ws": "^5.1.0",
-    "pug": "2.0.0-beta11"
+    "ws": "^5.1.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

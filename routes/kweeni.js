@@ -17,10 +17,38 @@ const authCheck = (req, res, next) => {
 
 /* GET messages page. */
 router.get('/', authCheck, (req, res, next) => {
-  res.render('kweeni', { 
-    username: req.user.username,
-    picture: req.user.picture
+  Question.find({}).
+  populate('author').
+  exec(function(err, question) {
+    if(err) {
+      res.send("404");
+    } else {
+      res.render('kweeni', { 
+        username: req.user.username,
+        picture: req.user.picture,
+        questions: question
+      });
+    }
   });
+});
+
+// GET messege details page with the user id
+router.get('/:question', function(req, res, next) {
+  Question.findOne({slug: req.params.question}).
+  populate('author').
+  exec(function (err, question) {
+    if(err) { 
+      res.send("404");
+    } else {
+      res.render('kweeni-details', { 
+        username: req.user.username,
+        picture: req.user.picture,
+        question: question.question,
+        authorName: question.author.username,
+        authorPicture: question.author.picture
+    });
+  }
+});
 });
 
 // POST method route=
@@ -33,16 +61,16 @@ router.post('/', (req, res) => {
       remove: null,        // regex to remove characters
       lower: true          // result in lower case
     }),
-    likes: 0,
-    author: req.user.id
+    likes: null,
+    date: Date.now(),
+    author: req.user.id,
+    comment: null
   });
   question.save(function (err) {
     Question.findOne({}).
     populate('author').
-    exec(function (err, story) {
-      if (err) return handleError(err);
-      console.log('The author is %s', question.author.name);
-      // prints "The author is Ian Fleming"
+    exec(function (err, question) {
+      if (err) console.log(err);
     });
   });
   res.redirect('/kweeni/' + slugify(req.body.question, {

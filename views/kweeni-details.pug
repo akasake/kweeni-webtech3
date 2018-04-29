@@ -12,7 +12,7 @@ block content
         img(src=picture, alt='user').header__user__img
   .subheader
     .subheader__container
-      h3.subheader__title "Wat is een express.js en waarvoor dient het?"
+      h3.subheader__title=question
   .header__bottom
     .container.like
       .header__bottom__likesCount
@@ -34,11 +34,11 @@ block content
         img.header__bottom__likedUsers__img(src='../images/user12.png', alt='')
       .header__bottom__OP
         p.header__bottom__OPTime 12 maanden geleden gevraagd door
-        p.header__bottom__OPName Anneke Kodeur
-        img.comments__userImg.comments__userImg--alignment(src='../images/user1.png', alt='profile pic')
+        p.header__bottom__OPName=authorName
+        img.comments__userImg.comments__userImg--alignment(src=authorPicture, alt='profile pic')
   main
     .container.comments
-      .comments__textBox
+      .comments__textBox#thisId
         p
           | Op de site staat: Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
         .comments__user
@@ -69,6 +69,6 @@ block content
           input.comments_reply_input(type='text', name='comment', placeholder='Plaats commentaar...')
   .container.bottom__answerInput
     img.bottom__answerInput__img(src='../images/user1.png', alt='user')
-    form.bottom__answerInput__form(action='')
+    .bottom__answerInput__form
       input.bottom__answerInput__input(type='text', placeholder='Reageer hier op deze vraag')
-    a.bottom__answerInput__button.button(href='') REAGEREN
+    a.bottom__answerInput__button.button(href='#') REAGEREN

@@ -7,6 +7,7 @@ module.exports = {
     },
     mongodb: {
         dbURI: 'mongodb+srv://codemaster:Roby30091992@kweeni-p1vc9.mongodb.net/'
+        // dbURI: 'mongodb://localhost:27017/'
     },
     session: {
         cookieKey: 'weareonfire!IMD'

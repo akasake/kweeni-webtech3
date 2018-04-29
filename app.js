@@ -50,21 +50,6 @@ app.use('/', indexRouter);
 app.use('/auth', authRoutes);
 app.use('/kweeni', kweeniRouter);
 
-// GET messege details page with the user id
-app.get('/kweeni/:question', function(req, res, next) {
-  Question.find({slug: req.params.question}, function(err, question) {
-    if(err) {
-      res.send("404");
-    } else {
-      res.render('kweeni-details', { 
-        username: req.user.username,
-        picture: req.user.picture,
-        question: question[0].question
-      });
-    }
-  });
-});
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
