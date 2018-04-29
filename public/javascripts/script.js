@@ -1,4 +1,4 @@
-var url = "";
+var url = "/";
 var primus = Primus.connect(url, {
     reconnect: {
         max: Infinity // Number: The max delay before we try to reconnect.
@@ -14,7 +14,7 @@ var primus = Primus.connect(url, {
       <div class="comments__textBox">
         <p>${data.body}</p>
         <div class="comments__user">
-          <img class="comments__userImg" src="dasdas" alt="">
+          <img class="comments__userImg" src="" alt="">
           <p class="comments__userName">das</p>
         </div>
       </div>`;

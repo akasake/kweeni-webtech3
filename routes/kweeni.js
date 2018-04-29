@@ -61,10 +61,10 @@ router.post('/', (req, res) => {
       remove: null,        // regex to remove characters
       lower: true          // result in lower case
     }),
-    likes: null,
     date: Date.now(),
+    likes: [],
     author: req.user.id,
-    comment: null
+    comment: []
   });
   question.save(function (err) {
     Question.findOne({}).
