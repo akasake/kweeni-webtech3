@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const User = require('../models/user-model');
 const Question = require('../models/question-model');
+const slugify = require('slugify')
 const router = express.Router();
 
 const authCheck = (req, res, next) => {
@@ -36,8 +37,13 @@ router.post('/', (req, res) => {
     author: req.user.id
   });
   question.save(function (err) {
-    Question.find({}).populate('author')
-    if (err) console.log(err);
+    Question.findOne({}).
+    populate('author').
+    exec(function (err, story) {
+      if (err) return handleError(err);
+      console.log('The author is %s', question.author.name);
+      // prints "The author is Ian Fleming"
+    });
   });
   res.redirect('/kweeni/' + slugify(req.body.question, {
     replacement: '-',    // replace spaces with replacement

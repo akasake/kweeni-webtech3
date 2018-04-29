@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require('passport');
 const bodyParser= require('body-parser');
+const Question = require('./models/question-model');
 
 const indexRouter = require('./routes/index');
 const kweeniRouter = require('./routes/kweeni');
