@@ -25,7 +25,7 @@ block content
         each like in likes
           img.header__bottom__likedUsers__img(src=like.likedBy.picture, alt=like.likedBy.username)
       .header__bottom__OP
-        p.header__bottom__OPTime 12 maanden geleden gevraagd door
+        p.header__bottom__OPTime=`gevraagd op ${date.getDate()}-${date.getMonth()}-${date.getFullYear()} door`
         p.header__bottom__OPName=authorName
         img.comments__userImg.comments__userImg--alignment(src=authorPicture, alt='profile pic')
   main
@@ -46,7 +46,7 @@ block content
         .comments__reply.comments__reply__form(id=`comments__reply`+answerCounter)
           input.comments_reply_input(type='text', placeholder='Plaats commentaar...', data-answernumber=answerCounter++)
   .container.bottom__answerInput
-    img.bottom__answerInput__img(src='../images/user1.png', alt='user')
+    img.bottom__answerInput__img(src=picture, alt=username)
     .bottom__answerInput__form
       input.bottom__answerInput__input(type='text', placeholder='Reageer hier op deze vraag')
     a.bottom__answerInput__button.button(href='#') REAGEREN

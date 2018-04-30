@@ -23,7 +23,7 @@ block content
       .topic
         .topic__likes
           img(src='/images/icon-cool.svg', alt='icon').topic__likes__icon
-          span.topic__likes__count x33
+          span(class='topic__likes__count')=`x${question.likes.length}`
         .topic__question
           a(href="/kweeni/"+question.slug)=question.question
         .topic__author
