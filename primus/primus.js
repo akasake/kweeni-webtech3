@@ -12,9 +12,12 @@ exports.kickstart = function(server) {
             User.findOne({ _id: data.userId }, function (err, user) {
                 data.username = user.username;
                 data.userPicture = user.picture;
-                console.log(data);
-                primus.write(data);
-            })
+                Question.findOne({ _id: data.questionId }, function (err, question) {
+                    data.likesCount = question.likes.length+1;
+                    console.log(data);
+                    primus.write(data);
+                });
+            });
             if(data.btn) {
                 Question.findById({ _id: data.questionId }, function (err, comment) {
                     if (err) console.log(err);

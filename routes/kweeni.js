@@ -39,6 +39,7 @@ router.get('/:question', function(req, res, next) {
   populate('author').
   populate('comment.postedBy').
   populate('comment.subComments.postedBy').
+  populate('likes.likedBy').
   exec(function (err, question) {
     if(err) { 
       res.send("404");
@@ -52,7 +53,9 @@ router.get('/:question', function(req, res, next) {
         authorPicture: question.author.picture,
         questionId: question.id,
         comments: question.comment,
-        answerCounter: 1
+        answerCounter: 1,
+        likes: question.likes,
+        likesCount: question.likes.length
     });
   }
 });

@@ -28,7 +28,7 @@ const questionSchema = new Schema({
     slug: String,
     date: Date,
     likes: [{ 
-        likedBy: { type: Schema.Types.ObjectId, ref: 'Like' }
+        likedBy: { type: Schema.Types.ObjectId, ref: 'User' }
     }],
     author: { type: Schema.Types.ObjectId, ref: 'User' },
     comment: [{

@@ -19,20 +19,11 @@ block content
       .header__bottom__likesCount
         .header__bottom__likesBox
           img.header__bottom__likesBox__emoji(src='../images/icon-cool.svg', alt='cool icon')
-          span.header__bottom__likesBox__Nr x20
+          span(class='header__bottom__likesBox__Nr')=`x${likesCount}`
         a.header__bottom__likesLink(href='#') Like deze vraag
       .header__bottom__likedUsers
-        img.header__bottom__likedUsers__img(src='../images/user1.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user2.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user3.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user4.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user5.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user6.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user7.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user8.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user9.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user10.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user12.png', alt='')
+        each like in likes
+          img.header__bottom__likedUsers__img(src=like.likedBy.picture, alt=like.likedBy.username)
       .header__bottom__OP
         p.header__bottom__OPTime 12 maanden geleden gevraagd door
         p.header__bottom__OPName=authorName

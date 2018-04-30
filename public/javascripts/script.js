@@ -29,6 +29,7 @@ var primus = Primus.connect(url, {
 
         var avatar = `<img class="header__bottom__likedUsers__img" src="${data.userPicture}" alt="${data.username}">`;
         document.querySelector(".header__bottom__likedUsers").innerHTML += avatar;
+        document.querySelector(".header__bottom__likesBox__Nr").innerHTML = "x" + data.likesCount;
 
     } else {
 
