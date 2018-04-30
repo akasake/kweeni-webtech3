@@ -1,4 +1,16 @@
-var url = "/";
+// Primus web sockets implementation
+var uid = document.querySelector("#userId").value;
+
+if( document.querySelector(".subheader__title") != null )
+{
+    var questionId = document.querySelector(".subheader__title").id;
+}
+else
+{
+    var questionId = null;
+}
+
+var url = "/?user="+uid+"&room="+questionId; // pass the user id as a query parameter
 var primus = Primus.connect(url, {
     reconnect: {
         max: Infinity // Number: The max delay before we try to reconnect.

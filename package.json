@@ -19,6 +19,7 @@
     "passport-google-oauth20": "^1.0.0",
     "primus": "^7.1.1",
     "primus-emit": "^1.0.0",
+    "primus-rooms": "^3.4.1",
     "pug": "2.0.0-beta11",
     "slugify": "^1.2.9",
     "ws": "^5.1.0"

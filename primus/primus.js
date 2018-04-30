@@ -1,50 +1,70 @@
 const User = require('../models/user-model');
 const Question = require('../models/question-model');
 const mongoose = require('mongoose');
+var Primus = require('primus');
+var Rooms = require('primus-rooms');
+var server = require('http').createServer();
 
 exports.kickstart = function(server) {
     const Primus = require('primus');
-    let primus = new Primus(server, {});
+    let primus = new Primus(server, { transformer: 'websockets' });
+
+    // add rooms to Primus
+    primus.plugin('rooms', Rooms);
 
     primus.on('connection', function(spark) {
         console.log("Spark connected");
         spark.on('data', function(data) {
-            User.findOne({ _id: data.userId }, function (err, user) {
-                data.username = user.username;
-                data.userPicture = user.picture;
-                Question.findOne({ _id: data.questionId }, function (err, question) {
-                    data.likesCount = question.likes.length+1;
-                    console.log(data);
-                    primus.write(data);
-                });
-            });
-            if(data.btn) {
-                Question.findById({ _id: data.questionId }, function (err, comment) {
-                    if (err) console.log(err);
-                    comment.comment.push({
-                        comment: data.comment,
-                        subComments: [],
-                        postedBy: data.userId
-                    });
-                    comment.save();
-                });
-            } else if(data.like) {
-                Question.findById({ _id: data.questionId }, function (err, like) {
-                    if (err) console.log(err);
-                    like.likes.push({
-                        likedBy: data.userId,
-                    });
-                    like.save();
-                });
+
+            var room = spark.query.room;
+
+            // check if spark is already in this room
+            if (~spark.rooms().indexOf(room)) {
+                send();
             } else {
-                Question.findById({ _id: data.questionId }, function (err, comment) {
-                    if (err) console.log(err);
-                    comment.comment[data.answerId - 1].subComments.push({
-                        comment: data.subcomment,
-                        postedBy: data.userId
-                    });
-                    comment.save();
+                // join the room
+                spark.join(room, function(){
+                send();
                 });
+            }
+
+            function send() {
+                User.findOne({ _id: data.userId }, function (err, user) {
+                    data.username = user.username;
+                    data.userPicture = user.picture;
+                    Question.findOne({ _id: data.questionId }, function (err, question) {
+                        data.likesCount = question.likes.length+1;
+                        spark.room(room).write(data);
+                    });
+                });
+                if(data.btn) {
+                    Question.findById({ _id: data.questionId }, function (err, comment) {
+                        if (err) console.log(err);
+                        comment.comment.push({
+                            comment: data.comment,
+                            subComments: [],
+                            postedBy: data.userId
+                        });
+                        comment.save();
+                    });
+                } else if(data.like) {
+                    Question.findById({ _id: data.questionId }, function (err, like) {
+                        if (err) console.log(err);
+                        like.likes.push({
+                            likedBy: data.userId,
+                        });
+                        like.save();
+                    });
+                } else {
+                    Question.findById({ _id: data.questionId }, function (err, comment) {
+                        if (err) console.log(err);
+                        comment.comment[data.answerId - 1].subComments.push({
+                            comment: data.subcomment,
+                            postedBy: data.userId
+                        });
+                        comment.save();
+                    });
+                }
             }
         });
     });
