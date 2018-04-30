@@ -28,13 +28,17 @@ const questionSchema = new Schema({
     slug: String,
     date: Date,
     likes: [{ 
-        likedBy: {
-            type: Schema.Types.ObjectId, 
-            ref: 'Like' 
-        }
+        likedBy: { type: Schema.Types.ObjectId, ref: 'Like' }
     }],
     author: { type: Schema.Types.ObjectId, ref: 'User' },
-    comment: [commentSchema]
+    comment: [{
+        comment: String,
+        subComments: [{
+            comment: String,
+            postedBy: { type: Schema.Types.ObjectId, ref: 'User' }
+        }],
+        postedBy: { type: Schema.Types.ObjectId, ref: 'User' }
+    }]
 });
 
 const Question = mongoose.model('Question', questionSchema);
