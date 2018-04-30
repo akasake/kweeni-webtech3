@@ -8,6 +8,7 @@ block content
           img#logo(src='/images/logo.svg', alt='logo_KWEENI')
       .header__user
         span.header__user=username
+        input#userId(type='hidden', value=userId)
         a(href='/auth/logout').header__user__logout Uitloggen
         img(src=picture, alt='user').header__user__img
   .subheader
