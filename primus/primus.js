@@ -25,6 +25,14 @@ exports.kickstart = function(server) {
                     });
                     comment.save();
                 });
+            } else if(data.like) {
+                Question.findById({ _id: data.questionId }, function (err, like) {
+                    if (err) console.log(err);
+                    like.likes.push({
+                        likedBy: data.userId,
+                    });
+                    like.save();
+                });
             } else {
                 Question.findById({ _id: data.questionId }, function (err, comment) {
                     if (err) console.log(err);

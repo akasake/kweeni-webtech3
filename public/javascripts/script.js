@@ -25,6 +25,11 @@ var primus = Primus.connect(url, {
       </div>`;
       document.querySelector(".comments").innerHTML += comment;
 
+    } else if(data.like) {
+
+        var avatar = `<img class="header__bottom__likedUsers__img" src="${data.userPicture}" alt="${data.username}">`;
+        document.querySelector(".header__bottom__likedUsers").innerHTML += avatar;
+
     } else {
 
       var answerId = data.answerId;
@@ -45,7 +50,7 @@ var primus = Primus.connect(url, {
 
   if(document.querySelector(".header__bottom")) {
     
-    // Trigger a new answer
+    // On a new comment
     document.querySelector(".bottom__answerInput__button").addEventListener("click", function(e){
         var txtAnswer = document.querySelector(".bottom__answerInput__input");
         var text = txtAnswer.value;
@@ -64,7 +69,7 @@ var primus = Primus.connect(url, {
     });
 
     
-    // Trigger a new comment
+    // On a new subcomment
     document.querySelector(".comments").addEventListener("keydown", function(e){
       if(e.keyCode == 13){
           // ENTER!
@@ -84,6 +89,21 @@ var primus = Primus.connect(url, {
           e.preventDefault();
       }
     });
+
+    // On a new like
+    document.querySelector(".header__bottom__likesLink").addEventListener("click", function(e){
+      var questionId = document.querySelector(".subheader__title").id;
+      var like = true;
+      var userId = document.querySelector("#userId").value;
+      primus.write({ 
+        questionId: questionId,
+        like: like,
+        userId: userId
+      });
+
+      e.preventDefault();
+    });
+
   }
 
 
