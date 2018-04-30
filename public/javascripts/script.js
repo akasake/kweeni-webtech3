@@ -10,25 +10,34 @@ var primus = Primus.connect(url, {
   primus.on('data', function(data) {
 
     if(data.btn) {
+
+      var answerCounter = document.querySelectorAll(".main_comment").length+1;
       var comment = `
-      <div class="comments__textBox">
-        <p>${data.body}</p>
+      <div class="main_comment comments__textBox">
+        <p>${data.comment}</p>
         <div class="comments__user">
-          <img class="comments__userImg" src="" alt="">
-          <p class="comments__userName">das</p>
+          <img class="comments__userImg" src="${data.userPicture}" alt="${data.username}">
+          <p class="comments__userName">${data.username}</p>
         </div>
+      </div>
+      <div class="comments__reply__form comments__reply" id="comments__reply${answerCounter}">
+        <input class="comments_reply_input" type="text" placeholder="Plaats commentaar..." data-answernumber="${answerCounter}">
       </div>`;
       document.querySelector(".comments").innerHTML += comment;
+
     } else {
+
+      var answerId = data.answerId;
       var comment = `
       <div class="comments__textBox reply">
-        <p>${data.body}</p>
+        <p>${data.subcomment}</p>
         <div class="comments__user">
-          <img class="comments__userImg" src="../images/user1.png" alt="">
-          <p class="comments__userName comments__userName--highlight">Anneke Kodeur</p>
+          <img class="comments__userImg" src="${data.userPicture}" alt="${data.username}">
+          <p class="comments__userName comments__userName--highlight">${data.username}</p>
         </div>
       </div>`;
-      document.querySelector("#thisId").innerHTML += comment;
+      document.querySelector("#comments__reply"+answerId).insertAdjacentHTML('beforebegin', comment);
+
     }
 
 });
@@ -39,12 +48,15 @@ var primus = Primus.connect(url, {
     // Trigger a new answer
     document.querySelector(".bottom__answerInput__button").addEventListener("click", function(e){
         var txtAnswer = document.querySelector(".bottom__answerInput__input");
-        var answer = txtAnswer.value;
+        var text = txtAnswer.value;
         var btn = true;
-        //var questionId = document.querySelector(".questionDetails").dataset.questionid;
+        var questionId = document.querySelector(".subheader__title").id;
+        var userId = document.querySelector("#userId").value;
         primus.write({ 
-          body: answer,
-          btn: btn
+          comment: text,
+          btn: btn,
+          questionId: questionId,
+          userId: userId
          });
 
         txtAnswer.value = "";
@@ -53,17 +65,43 @@ var primus = Primus.connect(url, {
 
     
     // Trigger a new comment
-    document.querySelector(".comments_reply_input").addEventListener("keydown", function(e){
+    document.querySelector(".comments").addEventListener("keydown", function(e){
       if(e.keyCode == 13){
           // ENTER!
           var el = e.target;
-          var comment = el.value;
-          // var answerId = el.dataset.answernumber;
-          // var questionId = document.querySelector(".questionDetails").dataset.questionid;
-          primus.write({ body: comment });
+          var text = el.value;
+          var answerId = el.dataset.answernumber;
+          var questionId = document.querySelector(".subheader__title").id;
+          var userId = document.querySelector("#userId").value;
+          primus.write({ 
+            subcomment: text,
+            questionId: questionId,
+            answerId: answerId,
+            userId: userId
+          });
 
           el.value = "";
           e.preventDefault();
       }
     });
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
