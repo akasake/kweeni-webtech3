@@ -55,7 +55,8 @@ router.get('/:question', function(req, res, next) {
         comments: question.comment,
         answerCounter: 1,
         likes: question.likes,
-        likesCount: question.likes.length
+        likesCount: question.likes.length,
+        date: question.date
     });
   }
 });
