@@ -25,6 +25,7 @@ router.get('/', authCheck, (req, res, next) => {
     } else {
       res.render('kweeni', { 
         username: req.user.username,
+        userId: req.user.id,
         picture: req.user.picture,
         questions: question
       });
@@ -36,16 +37,22 @@ router.get('/', authCheck, (req, res, next) => {
 router.get('/:question', function(req, res, next) {
   Question.findOne({slug: req.params.question}).
   populate('author').
+  populate('comment.postedBy').
+  populate('comment.subComments.postedBy').
   exec(function (err, question) {
     if(err) { 
       res.send("404");
     } else {
       res.render('kweeni-details', { 
         username: req.user.username,
+        userId: req.user.id,
         picture: req.user.picture,
         question: question.question,
         authorName: question.author.username,
-        authorPicture: question.author.picture
+        authorPicture: question.author.picture,
+        questionId: question.id,
+        comments: question.comment,
+        answerCounter: 1
     });
   }
 });
