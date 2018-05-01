@@ -196,8 +196,7 @@
   
     .home__header__container__login {
       grid-column: 7 / 11;
-      grid-row: 1 / 2;
-      padding: 60px 0 60px 0;
+      grid-row: 1 / 2;      
       align-self: center;
     }
   
@@ -382,11 +381,12 @@
   }
   .bottom__answerInput__img{
       border-radius: 0;
-      height: 2em;
+      width: 39px;
   }
   .bottom__answerInput__input{
       height: 2.4em;
       border: none;
+      padding-left: 10px;
   }
   
   
