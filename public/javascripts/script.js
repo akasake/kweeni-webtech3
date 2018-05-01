@@ -1,6 +1,12 @@
-if(document.querySelector(".subheader__title")) {
-  var questionId = document.querySelector(".subheader__title").id;
+if( document.querySelector(".subheader__title") != null )
+{
+    var questionId = document.querySelector(".subheader__title").id;
 }
+else
+{
+    var questionId = null;
+}
+
 var url = "/?room="+questionId;
 var primus = Primus.connect(url, {
     reconnect: {
