@@ -50,10 +50,19 @@ exports.kickstart = function(server) {
                 } else if(data.like) {
                     Question.findById({ _id: data.questionId }, function (err, like) {
                         if (err) console.log(err);
-                        like.likes.push({
-                            likedBy: data.userId,
-                        });
-                        like.save();
+
+                        var alreadyLiked = false;
+                        for (let i = 0; i < like.likes.length; i++) {
+                            if(like.likes[i].likedBy == data.userId) {
+                                alreadyLiked = true;
+                            }
+                        }
+                        if(alreadyLiked == false) {
+                            like.likes.push({
+                                likedBy: data.userId,
+                            });
+                            like.save();
+                        }
                     });
                 } else {
                     Question.findById({ _id: data.questionId }, function (err, comment) {

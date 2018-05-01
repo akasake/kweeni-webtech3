@@ -1,4 +1,6 @@
-var questionId = document.querySelector(".subheader__title").id;
+if(document.querySelector(".subheader__title")) {
+  var questionId = document.querySelector(".subheader__title").id;
+}
 var url = "/?room="+questionId;
 var primus = Primus.connect(url, {
     reconnect: {
@@ -30,7 +32,7 @@ var primus = Primus.connect(url, {
 
         var avatar = `<img class="header__bottom__likedUsers__img" src="${data.userPicture}" alt="${data.username}">`;
         document.querySelector(".header__bottom__likedUsers").innerHTML += avatar;
-        document.querySelector(".header__bottom__likesBox__Nr").innerHTML = "x" + data.likesCount+1;
+        document.querySelector(".header__bottom__likesBox__Nr").innerHTML = "x" + data.likesCount;
 
     } else {
 
