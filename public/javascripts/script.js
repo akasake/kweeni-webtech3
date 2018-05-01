@@ -9,7 +9,8 @@ var primus = Primus.connect(url, {
       , retries: 10 // Number: How many times we should try to reconnect.
     }
   });
-  
+
+primus.on('open', function () {
   primus.on('data', function(data) {
 
     if(data.btn) {
@@ -117,6 +118,7 @@ var primus = Primus.connect(url, {
     });
 
   }
+}
 
 
 
