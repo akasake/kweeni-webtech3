@@ -14,19 +14,18 @@ exports.kickstart = function(server) {
 
     primus.on('connection', function(spark) {
         console.log("Spark connected");
+        // get room from url
+        var room = spark.query.room;
+        // check if spark is already in this room
+        if (~spark.rooms().indexOf(room)) {
+            send();
+        } else {
+            // join the room
+            spark.join(room, function(){
+            send();
+            });
+        }
         spark.on('data', function(data) {
-
-            var room = spark.query.room;
-
-            // check if spark is already in this room
-            if (~spark.rooms().indexOf(room)) {
-                send();
-            } else {
-                // join the room
-                spark.join(room, function(){
-                send();
-                });
-            }
 
             function send() {
                 User.findOne({ _id: data.userId }, function (err, user) {

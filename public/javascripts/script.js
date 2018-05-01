@@ -16,7 +16,6 @@ var primus = Primus.connect(url, {
     }
   });
 
-primus.on('open', function () {
   primus.on('data', function(data) {
 
     if(data.btn) {
@@ -124,7 +123,6 @@ primus.on('open', function () {
     });
 
   }
-});
 
 
 
