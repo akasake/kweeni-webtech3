@@ -118,7 +118,7 @@ primus.on('open', function () {
     });
 
   }
-}
+});
 
 
 
