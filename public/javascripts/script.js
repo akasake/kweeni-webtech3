@@ -30,7 +30,7 @@ var primus = Primus.connect(url, {
 
     } else if(data.like) {
         var alreadyLiked = false; 
-        var usersWhoLiked = document.quesrySelectorAll(".header__bottom__likedUsers__img");
+        var usersWhoLiked = document.querySelectorAll(".header__bottom__likedUsers__img");
         for (let i = 0; i < usersWhoLiked.length; i++) {
           if(usersWhoLiked[i].alt == data.username) {
               alreadyLiked = true;
