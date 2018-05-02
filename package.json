@@ -28,6 +28,7 @@
     "gulp": "^3.9.1",
     "gulp-imagemin": "^4.1.0",
     "gulp-jshint": "^2.1.0",
+    "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-sass": "^4.0.1",
     "jshint": "^2.9.5"
