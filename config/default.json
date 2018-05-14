@@ -1,0 +1,13 @@
+{
+    "Customer": {
+      "dbConfig": {
+        "host": "'mongodb+srv://codemaster:Roby30091992@kweeni-p1vc9.mongodb.net/",
+        "port": 5984,
+        "dbName": "Kweeni"
+      },
+      "credit": {
+        "initialLimit": 100,
+        "initialDays": 1
+      }
+    }
+  }
