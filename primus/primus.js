@@ -56,6 +56,14 @@ exports.kickstart = function(server) {
                        // run dit als like wordt gedurkt
                     } else {
                        // run dit als het een subcomment is
+                       Question.findById({ _id: data.questionId }, function (err, comment) {
+                            if (err) console.log(err);
+                            comment.comment[data.answerId - 1].subComments.push({
+                                comment: data.subcomment,
+                                postedBy: data.userId
+                            });
+                            comment.save();
+                        });
                     }
             });
         }
