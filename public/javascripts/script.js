@@ -36,6 +36,7 @@ var primus = Primus.connect(url, {
 		document.querySelector(".comments").innerHTML += comment;
   
 	  } else if(data.like) {
+		// display liked status and new number of comments
 		
   
 	  } else {
@@ -58,7 +59,7 @@ var primus = Primus.connect(url, {
 
   if(document.querySelector(".header__bottom")) {
     
-    // On a new comment
+    // when someone adds new comments
     document.querySelector(".bottom__answerInput__button").addEventListener("click", function(e){
         var txtAnswer = document.querySelector(".bottom__answerInput__input");
         var text = txtAnswer.value;
@@ -76,7 +77,7 @@ var primus = Primus.connect(url, {
         e.preventDefault();
     });
 
-    // On a new subcomment
+    // when someone adds new subcomment
     document.querySelector(".comments").addEventListener("keydown", function(e){
       if(e.keyCode == 13){
           // ENTER!
@@ -97,6 +98,20 @@ var primus = Primus.connect(url, {
       }
     });
 
+	// when someone clicks on like
+	document.querySelector(".header__bottom__likesLink").addEventListener("click", function(e){
+		var questionId = document.querySelector(".subheader__title").id;
+		var like = true;
+		var userId = document.querySelector("#userId").value;
+		primus.write({ 
+		  questionId: questionId,
+		  like: like,
+		  userId: userId
+		});
+  
+		e.preventDefault();
+	  });
+  
 
 
   }

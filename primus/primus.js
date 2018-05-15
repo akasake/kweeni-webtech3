@@ -54,6 +54,23 @@ exports.kickstart = function(server) {
 
                     } else if(data.like) {
                        // run dit als like wordt gedurkt
+                       Question.findById({ _id: data.questionId }, function (err, like) {
+                        if (err) console.log(err);
+
+                        var alreadyLiked = false;
+                        for (let i = 0; i < like.likes.length; i++) {
+                            if(like.likes[i].likedBy == data.userId) {
+                                alreadyLiked = true;
+                            }
+                        }
+                        if(alreadyLiked == false) {
+                            like.likes.push({
+                                likedBy: data.userId,
+                            });
+                            like.save();
+                        }
+                    });
+
                     } else {
                        // run dit als het een subcomment is
                        Question.findById({ _id: data.questionId }, function (err, comment) {
