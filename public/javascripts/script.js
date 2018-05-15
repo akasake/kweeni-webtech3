@@ -50,8 +50,6 @@ var primus = Primus.connect(url, {
 			document.querySelector(".header__bottom__likesBox__Nr").innerHTML = "x" + data.likesCount;
 			}
 
-
-  
 	  } else {
 		// display new subcomment
 		var answerId = data.answerId;
@@ -66,7 +64,6 @@ var primus = Primus.connect(url, {
 		document.querySelector("#comments__reply"+answerId).insertAdjacentHTML('beforebegin', comment);
   
 	  }
-  
     
 });
 
@@ -124,7 +121,5 @@ var primus = Primus.connect(url, {
   
 		e.preventDefault();
 	  });
-  
-
 
   }
