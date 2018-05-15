@@ -36,8 +36,21 @@ var primus = Primus.connect(url, {
 		document.querySelector(".comments").innerHTML += comment;
   
 	  } else if(data.like) {
-		// display liked status and new number of comments
-		
+			// display liked status and new number of comments
+			var alreadyLiked = false; 
+			var usersWhoLiked = document.querySelectorAll(".header__bottom__likedUsers__img");
+			for (let i = 0; i < usersWhoLiked.length; i++) {
+			if(usersWhoLiked[i].alt == data.username) {
+				alreadyLiked = true;
+			}
+			}
+			if(!alreadyLiked) {
+			var avatar = `<img class="header__bottom__likedUsers__img" src="${data.userPicture}" alt="${data.username}">`;
+			document.querySelector(".header__bottom__likedUsers").innerHTML += avatar;
+			document.querySelector(".header__bottom__likesBox__Nr").innerHTML = "x" + data.likesCount;
+			}
+
+
   
 	  } else {
 		// display new subcomment
