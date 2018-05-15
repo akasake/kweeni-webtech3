@@ -18,6 +18,41 @@ var primus = Primus.connect(url, {
 
   primus.on('data', function(data) {
 
+	// get info from primus.js 
+	if(data.btn) {
+		// display new comment
+		var answerCounter = document.querySelectorAll(".main_comment").length+1;
+		var comment = `
+		<div class="main_comment comments__textBox">
+		  <p>${data.comment}</p>
+		  <div class="comments__user">
+			<img class="comments__userImg" src="${data.userPicture}" alt="${data.username}">
+			<p class="comments__userName">${data.username}</p>
+		  </div>
+		</div>
+		<div class="comments__reply__form comments__reply" id="comments__reply${answerCounter}">
+		  <input class="comments_reply_input" type="text" placeholder="Plaats commentaar..." data-answernumber="${answerCounter}">
+		</div>`;
+		document.querySelector(".comments").innerHTML += comment;
+  
+	  } else if(data.like) {
+		
+  
+	  } else {
+		// display new subcomment
+		var answerId = data.answerId;
+		var comment = `
+		<div class="comments__textBox reply">
+		  <p>${data.subcomment}</p>
+		  <div class="comments__user">
+			<img class="comments__userImg" src="${data.userPicture}" alt="${data.username}">
+			<p class="comments__userName comments__userName--highlight">${data.username}</p>
+		  </div>
+		</div>`;
+		document.querySelector("#comments__reply"+answerId).insertAdjacentHTML('beforebegin', comment);
+  
+	  }
+  
     
 });
 
