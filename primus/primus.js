@@ -42,6 +42,16 @@ exports.kickstart = function(server) {
                     // backend info doorsturen naar database
                     if(data.btn) {
                        // run dit als comment button wordt ingedrukt
+                       Question.findById({ _id: data.questionId }, function (err, comment) {
+                            if (err) console.log(err);
+                            comment.comment.push({
+                                comment: data.comment,
+                                subComments: [],
+                                postedBy: data.userId
+                            });
+                            comment.save();
+                        });
+
                     } else if(data.like) {
                        // run dit als like wordt gedurkt
                     } else {
