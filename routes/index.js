@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
       res.send("404");
     } else {
       res.render('index', { 
-        user1: users[0].picture
+        //user1: users[0].picture
         // user1: users[0].picture
       });
     }
