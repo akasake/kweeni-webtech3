@@ -20,6 +20,27 @@ const questionSchema = new Schema({
     }]   
 });
 
+const subcommentSchema = new Schema({
+    comment: String,
+    postedBy: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User'
+    }
+});
+
+const commentSchema = new Schema({
+    comment: String,
+    subComments: [subcommentSchema],
+    postedBy: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User'
+    }
+});
+
+const likeSchema = new Schema({
+    author: { type: Schema.Types.ObjectId, ref: 'User' }
+});
+
 
 const Question = mongoose.model('question', questionSchema);
 const Comment = mongoose.model('Comment', commentSchema);
