@@ -17,10 +17,21 @@ const authCheck = (req, res, next) => {
 
 /* GET messages page. */
 router.get('/', authCheck, (req, res, next) => {
-  res.render('kweeni', { 
-    username: req.user.username,
-    picture: req.user.picture
+  Question.find({}).
+  populate('author').
+  exec(function(err, question) {
+    if(err) {
+      res.send("404");
+    } else {
+      res.render('kweeni', { 
+        username: req.user.username,
+        userId: req.user.id,
+        picture: req.user.picture,
+        questions: question
+      });
+    }
   });
+
 });
 
 // GET messege details page with the user id
@@ -41,22 +52,30 @@ router.get('/:question', function(req, res, next) {
 // POST method route=
 router.post('/', (req, res) => {
   var username = req.user.username;
-  var slugQuestion = slugify(req.body.question, {
-    replacement: '-',
-    remove: null,
-    lower: true
-  });
   var question = new Question({
     question: req.body.question,
+    slug: slugify(req.body.question, {
+      replacement: '-',    // replace spaces with replacement
+      remove: null,        // regex to remove characters
+      lower: true          // result in lower case
+    }),
+    date: Date.now(),
+    likes: [],
     author: req.user.id,
-    slug: slugQuestion,
-    likes: 0,
+    comment: []
   });
   question.save(function (err) {
-    Question.find({}).populate('author')
-    if (err) console.log(err);
+    Question.findOne({}).
+    populate('author').
+    exec(function (err, question) {
+      if (err) console.log(err);
+    });
   });
-  res.redirect('/kweeni/' + slugQuestion)
+  res.redirect('/kweeni/' + slugify(req.body.question, {
+    replacement: '-',    // replace spaces with replacement
+    remove: null,        // regex to remove characters
+    lower: true          // result in lower case
+  }))
 });
 
 module.exports = router;
