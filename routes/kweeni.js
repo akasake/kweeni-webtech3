@@ -36,18 +36,27 @@ router.get('/', authCheck, (req, res, next) => {
 
 // GET messege details page with the user id
 router.get('/:question', authCheck, function(req, res, next) {
-  Question.findOne({slug: req.params.question}).populate('author').exec(function(err, question) {
-    if(err) {
-      console.log(err);
+  Question.findOne({slug: req.params.question}).
+  populate('author').
+  populate('comment.postedBy').
+  populate('comment.subComments.postedBy').
+  populate('likes.likedBy').
+  exec(function (err, question) {
+    if(err) { 
       res.send("404");
     } else {
-      
       res.render('kweeni-details', {
         username: req.user.username,
+        userId: req.user.id,
         userPicture: req.user.picture,
         question: '"'+question.question+'"',
         postername: question.author.username,
         posterPicture: question.author.picture,
+        questionId: question.id,
+        comments: question.comment,
+        answerCounter: 1,
+        likes: question.likes,
+        likesCount: question.likes.length,
         date: dateNotation(question.date)+" gevraagd door"
       });
     }
@@ -67,7 +76,6 @@ router.post('/', (req, res) => {
     date: Date.now(),
     likes: [],
     author: req.user.id,
-    slug: slugQuestion,
     likes: 0,
     date: Date.now()
   });
