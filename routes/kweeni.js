@@ -17,9 +17,7 @@ const authCheck = (req, res, next) => {
 
 /* GET messages page. */
 router.get('/', authCheck, (req, res, next) => {
-  Question.find({}).
-  populate('author').
-  exec(function(err, question) {
+  Question.find({}).populate('author').exec(function(err, question) {
     if(err) {
       res.send("404");
     } else {
@@ -31,17 +29,11 @@ router.get('/', authCheck, (req, res, next) => {
       });
     }
   });
-
 });
 
 // GET messege details page with the user id
-router.get('/:question', function(req, res, next) {
-  Question.findOne({slug: req.params.question}).
-  populate('author').
-  populate('comment.postedBy').
-  populate('comment.subComments.postedBy').
-  populate('likes.likedBy').
-  exec(function (err, question) {
+router.get('/:question', authCheck, function(req, res, next) {
+  Question.findOne({slug: req.params.question}).populate('author').populate('comment.postedBy').populate('comment.subComments.postedBy').populate('likes.likedBy').exec(function (err, question) {
     if(err) { 
       res.send("404");
     } else {
