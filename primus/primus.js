@@ -29,7 +29,7 @@ exports.kickstart = function(server) {
         // send to the user in the room
         function send() {
             spark.on('data', function(data) {
-                    // basic front end info doorsturen naar frontend
+                    // basic frontend info doorsturen naar frontend
                     User.findOne({ _id: data.userId }, function (err, user) {
                         data.username = user.username;
                         data.userPicture = user.picture;
