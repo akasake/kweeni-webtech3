@@ -2,8 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const User = require('../models/user-model');
 const Question = require('../models/question-model');
-const router = express.Router();
 const slugify = require('slugify');
+const router = express.Router();
 
 const authCheck = (req, res, next) => {
   if(!req.user) {
@@ -36,14 +36,18 @@ router.get('/', authCheck, (req, res, next) => {
 
 // GET messege details page with the user id
 router.get('/:question', function(req, res, next) {
-  Question.findOne({slug: req.params.question}, function(err, question) {
+  Question.findOne({slug: req.params.question}).populate('author').exec(function(err, question) {
     if(err) {
+      console.log(err);
       res.send("404");
     } else {
+      console.log("author = "+question.author.username);
       res.render('kweeni-details', {
         username: req.user.username,
-        picture: req.user.picture,
-        question: '"'+question.question+'"'
+        userPicture: req.user.picture,
+        question: '"'+question.question+'"',
+        postername: question.author.username,
+        posterPicture: question.author.picture
       });
     }
   });

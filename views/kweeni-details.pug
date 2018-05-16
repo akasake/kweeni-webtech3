@@ -9,7 +9,7 @@ block content
       .header__user
         span.header__user=username
         a(href='/auth/logout').header__user__logout Uitloggen
-        img(src=picture, alt='user').header__user__img
+        img(src=userPicture, alt='user').header__user__img
   .subheader
     .subheader__container
       h3.subheader__title=question
@@ -34,8 +34,8 @@ block content
         img.header__bottom__likedUsers__img(src='../images/user12.png', alt='')
       .header__bottom__OP
         p.header__bottom__OPTime 12 maanden geleden gevraagd door
-        p.header__bottom__OPName Anneke Kodeur
-        img.comments__userImg.comments__userImg--alignment(src='../images/user1.png', alt='profile pic')
+        p.header__bottom__OPName=postername
+        img.comments__userImg.comments__userImg--alignment(src=posterPicture, alt='profile pic')
   main
     .container.comments
       .comments__textBox
