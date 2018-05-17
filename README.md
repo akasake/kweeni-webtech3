@@ -53,3 +53,17 @@
 > - header
 > - title
 > - ...
+
+
+### lokaal runnen op https
+##### Stappenplan
+> - 1) ngrok.exe in het project runnen
+> - 2) gegenereerde https link kopieren
+> - 3) naar facebook developer dashboard gaan, naar Facebook Login > Settings
+> - 4) de https link van ngrok+"auth/facebook/rederict" ingeven in "Valid OAuth Redirect URIs" op facebook
+> - 5) Save changes op facebook
+> - 6) in code, config, passport-setup: callbackURL (lijn 19) veranderen naar dzelfde link als is ingegeven op facebook
+> - 7) runnen met nodemon
+> - 9) mongo lokaal opstarten ("mongod")
+> - 10) in het project, config > keys , "dbURI: 'mongodb://localhost:27017/'" uit comments zetten
+> - 11) naar ngrok gegenereerde link surfen
