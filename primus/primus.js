@@ -49,7 +49,7 @@ exports.kickstart = function(server) {
                             data.username = user.username;
                             data.userPicture = user.picture;
                             
-                            Question.findOne({ _id: data.questionId }, function (err, question) {
+                            Question.findOne({ question: data.question }, function (err, question) {
                                 data.likesCount = question.likes.length+1;
                                 spark.room(room).write(data);
                             });
