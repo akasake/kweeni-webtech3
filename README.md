@@ -1,5 +1,23 @@
 # Kweeni app 
 
+### Guide to branches
+
+#### User specific branches
+>master is everything merged
+ > - Benchaphon: Sass and Pham
+ > - Roel: Roel
+ > - Robert: master-test
+
+#### User specific features 
+>Benchaphon:
+> - Sass and Bem: Master, kweeni-details page
+> - Gulp: Sass, live-reload
+> - MongoDB: Master, kweeni page sockets and save
+>Roel:
+> -
+>Robert:
+> - 
+
 ### To do before 19-04-2018:
 
 ##### Step 1 -> Rewrite css classes in BEM format 
