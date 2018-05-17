@@ -47,7 +47,7 @@ exports.kickstart = function(server) {
                             comment.comment.push({
                                 comment: data.comment,
                                 postedBy: data.userId,
-                                subComments: []                               
+                                subComments: []  // initiate                             
                             });
                             comment.save();
                         });
