@@ -9,7 +9,7 @@ exports.kickstart = function(server) {
     const Primus = require('primus');
     let primus = new Primus(server, { transformer: 'websockets' });
 
-    // add rooms to Primus
+    // add rooms to Primus because multiple question pages
     primus.plugin('rooms', Rooms);
 
     primus.on('connection', function(spark) {
@@ -22,7 +22,7 @@ exports.kickstart = function(server) {
         } else {
             // join the room
             spark.join(room, function(){
-            send();
+            send(); // see function below
             });
         }
         
