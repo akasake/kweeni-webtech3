@@ -31,11 +31,10 @@ router.get('/', authCheck, (req, res, next) => {
       });
     }
   });
-
 });
 
 // GET messege details page with the user id
-router.get('/:question', authCheck, function(req, res, next) {
+router.get('/:question', function(req, res, next) {
   Question.findOne({slug: req.params.question}).
   populate('author').
   populate('comment.postedBy').
@@ -45,22 +44,22 @@ router.get('/:question', authCheck, function(req, res, next) {
     if(err) { 
       res.send("404");
     } else {
-      res.render('kweeni-details', {
+      res.render('kweeni-details', { 
         username: req.user.username,
         userId: req.user.id,
-        userPicture: req.user.picture,
-        question: '"'+question.question+'"',
-        postername: question.author.username,
-        posterPicture: question.author.picture,
+        picture: req.user.picture,
+        question: question.question,
+        authorName: question.author.username,
+        authorPicture: question.author.picture,
         questionId: question.id,
         comments: question.comment,
         answerCounter: 1,
         likes: question.likes,
         likesCount: question.likes.length,
-        date: dateNotation(question.date)+" gevraagd door"
-      });
-    }
-  });
+        date: question.date
+    });
+  }
+});
 });
 
 // POST method route=
@@ -76,8 +75,7 @@ router.post('/', (req, res) => {
     date: Date.now(),
     likes: [],
     author: req.user.id,
-    likes: 0,
-    date: Date.now()
+    comment: []
   });
   console.log(Date.now());
   question.save(function (err) {
