@@ -90,7 +90,7 @@ var primus = Primus.connect(url, {
     // when someone adds new subcomment
     document.querySelector(".comments").addEventListener("keydown", function(e){
       if(e.keyCode == 13){
-          // ENTER!
+          // if enter is pressed!
           var el = e.target;
           var text = el.value;
           var answerId = el.dataset.answernumber;
