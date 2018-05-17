@@ -30,14 +30,32 @@ exports.kickstart = function(server) {
         function send() {
             spark.on('data', function(data) {
                     // basic frontend info doorsturen naar frontend
-                    User.findOne({ _id: data.userId }, function (err, user) {
-                        data.username = user.username;
-                        data.userPicture = user.picture;
-                        Question.findOne({ _id: data.questionId }, function (err, question) {
-                            data.likesCount = question.likes.length+1;
-                            spark.room(room).write(data);
+                   
+                    if(data.question){
+                        User.findOne({ _id: data.userId }, function (err, user) {
+                             Question.findOne({ _id: data.questionId }, function (err, question) {
+                                data.picture = user.picture;
+                                data.author = username;
+                                data.slug = slugify(data.question, {
+                                    replacement: '-',    // replace spaces with replacement
+                                    remove: null,        // regex to remove characters
+                                    lower: true          // result in lower case
+                                })
+                                data.likesCount = 0;
+                            });
                         });
-                    });
+                    }else{
+                        User.findOne({ _id: data.userId }, function (err, user) {
+                            data.username = user.username;
+                            data.userPicture = user.picture;
+                            
+                            Question.findOne({ _id: data.questionId }, function (err, question) {
+                                data.likesCount = question.likes.length+1;
+                                spark.room(room).write(data);
+                            });
+                            
+                        });
+                    }
 
                     // backend info doorsturen naar database
                     if(data.btn) {
@@ -70,6 +88,22 @@ exports.kickstart = function(server) {
                             like.save();
                         }
                     });
+
+                    } else if(data.question) {
+                        // run dit als er een vraag wordt gemaakt
+                        var question = new Question({
+                            question: data.question,
+                            slug: slugify(data.question, {
+                              replacement: '-',    // replace spaces with replacement
+                              remove: null,        // regex to remove characters
+                              lower: true          // result in lower case
+                            }),
+                            date: Date.now(),
+                            likes: [],
+                            author: data.userId,
+                            comment: []
+                          });
+                          question.save();
 
                     } else {
                        // run dit als het een subcomment is

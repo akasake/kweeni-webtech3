@@ -50,7 +50,21 @@ var primus = Primus.connect(url, {
 			document.querySelector(".header__bottom__likesBox__Nr").innerHTML = "x" + data.likesCount;
 			}
 
-	  } else {
+		} else if (data.question){
+			var answerId = data.answerId;
+			var question = `
+			.topic
+        .topic__likes
+          img(src='/images/icon-cool.svg', alt='icon').topic__likes__icon
+          span(class='topic__likes__count')=x"${data.likesCount}"
+        .topic__question
+          a(href="/kweeni/"+ "${data.slug}")=${data.question}"
+        .topic__author
+          p=${data.author}
+					img(src=${data.picture}, alt='avatar')`;
+			document.querySelector(".list__title").innerHTML += question;
+					
+		}else {
 		// display new subcomment
 		var answerId = data.answerId;
 		var comment = `
@@ -122,4 +136,21 @@ var primus = Primus.connect(url, {
 		e.preventDefault();
 	  });
 
-  }
+	}
+	
+	if(document.querySelector(".subheader")) {
+    
+    // when someone adds new question
+    document.querySelector(".ask__button").addEventListener("click", function(e){
+        var question = document.querySelector(".subheader__prompt__input"); 
+        var userId = document.querySelector("#userId").value;
+        primus.write({ 
+          question: question,
+          userId: userId
+         });
+
+        question.value = "";
+        e.preventDefault();
+		});
+		
+	}
