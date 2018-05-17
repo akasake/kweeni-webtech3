@@ -41,6 +41,7 @@ gulp.task('nodemon', function () {
 
    
   gulp.task('watch', function() {
+    var server = livereload();
     livereload.listen();
-    gulp.watch('less/*.less', ['less']);
+    gulp.watch('.src/sass/*.sass', ['sass']);
   });
