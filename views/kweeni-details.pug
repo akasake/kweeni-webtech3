@@ -8,67 +8,48 @@ block content
           img#logo(src='/images/logo.svg', alt='logo_KWEENI')
       .header__user
         span.header__user=username
+        input#userId(type='hidden', value=userId)
         a(href='/auth/logout').header__user__logout Uitloggen
-        img(src=userPicture, alt='user').header__user__img
+        img(src=picture, alt='user').header__user__img
   .subheader
     .subheader__container
-      h3.subheader__title=question
+      h3(id=questionId).subheader__title=question
   .header__bottom
     .container.like
       .header__bottom__likesCount
         .header__bottom__likesBox
           img.header__bottom__likesBox__emoji(src='../images/icon-cool.svg', alt='cool icon')
-          span.header__bottom__likesBox__Nr x20
+          span(class='header__bottom__likesBox__Nr')=`x${likesCount}`
         a.header__bottom__likesLink(href='#') Like deze vraag
       .header__bottom__likedUsers
-        img.header__bottom__likedUsers__img(src='../images/user1.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user2.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user3.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user4.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user5.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user6.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user7.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user8.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user9.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user10.png', alt='')
-        img.header__bottom__likedUsers__img(src='../images/user12.png', alt='')
+        each like in likes
+          img.header__bottom__likedUsers__img(src=like.likedBy.picture, alt=like.likedBy.username)
       .header__bottom__OP
-        p.header__bottom__OPTime=date
-        p.header__bottom__OPName=postername
-        img.comments__userImg.comments__userImg--alignment(src=posterPicture, alt='profile pic')
+        p.header__bottom__OPTime=`gevraagd op ${date.getDate()}-${date.getMonth()}-${date.getFullYear()} door`
+        p.header__bottom__OPName=authorName
+        img.comments__userImg.comments__userImg--alignment(src=authorPicture, alt='profile pic')
   main
     .container.comments
-      .comments__textBox
-        p
-          | Op de site staat: Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
-        .comments__user
-          img.comments__userImg(src='../images/user2.png', alt='')
-          p.comments__userName Jay Ba-Kent
-      .comments__textBox.reply
-        p Thanks. Maar waarvoor doent dat eigenlijk? Frontend?
-        .comments__user
-          img.comments__userImg(src='../images/user1.png', alt='')
-          p.comments__userName.comments__userName--highlight Anneke Kodeur
-      .comments__textBox.reply
-        p
-          | Nee het is puur voor de backend. Vergelijk het met PHP. In je frontend kan je nog altijd gebruik maken van jQuery ofzo als je dat wil.
-        .comments__user
-          img.comments__userImg(src='../images/user3.png', alt='')
-          p.comments__userName Jev Dev
-      .comments__reply
-        form.comments__reply__form(action='')
-          input.comments_reply_input(type='text', name='comment', placeholder='Plaats commentaar...')
-      .comments__textBox
-        p
-          | Expressjs is eigenlijk gewoon een soort van bibliotheek met een hele hoop functies die het makkelijker maken om apps te schrijven in nodejs. Een beetje zoals jQuery in frontend, maar dan voor je back-end werk.
-        .comments__user
-          img.comments__userImg(src='../images/user4.png', alt='')
-          p.comments__userName Som Wan
-      .comments__reply
-        form.comments__reply__form(action='')
-          input.comments_reply_input(type='text', name='comment', placeholder='Plaats commentaar...')
+      - var answerCounter = 1
+      each comment in comments
+        .main_comment.comments__textBox
+          p=comment.comment
+          .comments__user
+            img.comments__userImg(src=comment.postedBy.picture, alt='')
+            p.comments__userName=comment.postedBy.username
+        each subComment in comment.subComments
+          .comments__textBox.reply
+            p=subComment.comment
+            .comments__user
+              img.comments__userImg(src=subComment.postedBy.picture, alt='')
+              p.comments__userName.comments__userName--highlight=subComment.postedBy.username
+        .comments__reply.comments__reply__form(id=`comments__reply`+answerCounter)
+          input.comments_reply_input(type='text', placeholder='Plaats commentaar...', data-answernumber=answerCounter++)
   .container.bottom__answerInput
-    img.bottom__answerInput__img(src='../images/user1.png', alt='user')
-    form.bottom__answerInput__form(action='')
+    img.bottom__answerInput__img(src=picture, alt=username)
+    .bottom__answerInput__form
       input.bottom__answerInput__input(type='text', placeholder='Reageer hier op deze vraag')
-    a.bottom__answerInput__button.button(href='') REAGEREN
+    a.bottom__answerInput__button.button(href='#') REAGEREN
+  script(src="/javascripts/primus-lib.js")
+  script(src="/javascripts/script.js")
+
