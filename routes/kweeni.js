@@ -20,6 +20,7 @@ router.get('/', authCheck, (req, res, next) => {
   Question.find({}).populate('author').exec(function(err, question) {
     if(err) {
       res.send("404");
+      console.log(err);
     } else {
       res.render('kweeni', { 
         username: req.user.username,
@@ -36,6 +37,7 @@ router.get('/:question', authCheck, function(req, res, next) {
   Question.findOne({slug: req.params.question}).populate('author').populate('comment.postedBy').populate('comment.subComments.postedBy').populate('likes.likedBy').exec(function (err, question) {
     if(err) { 
       res.send("404");
+      
     } else {
       res.render('kweeni-details', { 
         username: req.user.username,
@@ -56,36 +58,38 @@ router.get('/:question', authCheck, function(req, res, next) {
 });
 
 
-// POST method route=
+// When a new question is posted
 router.post('/', (req, res) => {
   var username = req.user.username;
+  // saving new question
   var question = new Question({
     question: req.body.question,
+    author: req.user.id,
+    // making url-able text
     slug: slugify(req.body.question, {
-      replacement: '-',    // replace spaces with replacement
+      replacement: '-',    // replace spaces with replacement -
       remove: null,        // regex to remove characters
       lower: true          // result in lower case
     }),
     date: Date.now(),
-    likes: [],
-    author: req.user.id,
-    comment: []
+    likes: [], // init likes
+    comment: [] // init comments
   });
+  // save question in database
   question.save(function (err) {
-    Question.findOne({}).
-    populate('author').
-    exec(function (err, question) {
+    Question.findOne({}).populate('author').exec(function (err, question) {
       if (err) console.log(err);
     });
   });
+  // redirects to question specific page with the 
   res.redirect('/kweeni/' + slugify(req.body.question, {
-    replacement: '-',    // replace spaces with replacement
+    replacement: '-',    // replace spaces with replacement -
     remove: null,        // regex to remove characters
     lower: true          // result in lower case
   }))
 });
 
-/*
+
 function dateNotation(date){
   var milliseconds = (Date.now()-date);
   var seconds = Math.floor(milliseconds/1000);
@@ -125,6 +129,6 @@ function dateNotation(date){
   //return milliseconds+"ms "+seconds+"s "+minutes+"m "+hours+"h "+days+"d "+weeks+"weken "+months+"maanden "+years+"jaar";
   return result;
 }
-*/
+
 
 module.exports = router;

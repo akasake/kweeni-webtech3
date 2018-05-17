@@ -16,7 +16,7 @@ passport.deserializeUser((id, done) => {
 passport.use(
     new FacebookStrategy({
         // options for the facebook strategy
-        callbackURL: 'https://2bbbfebb.ngrok.io/auth/facebook/redirect',
+        callbackURL: 'https://3ff73ed6.ngrok.io/auth/facebook/redirect',
         clientID: keys.facebook.clientID,
         clientSecret: keys.facebook.clientSecret,
         profileFields:['id','displayName','emails', 'picture.type(large)']
