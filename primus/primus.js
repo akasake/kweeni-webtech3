@@ -46,8 +46,8 @@ exports.kickstart = function(server) {
                             if (err) console.log(err);
                             comment.comment.push({
                                 comment: data.comment,
-                                subComments: [],
-                                postedBy: data.userId
+                                postedBy: data.userId,
+                                subComments: []                               
                             });
                             comment.save();
                         });
@@ -56,14 +56,17 @@ exports.kickstart = function(server) {
                        // run dit als like wordt gedurkt
                        Question.findById({ _id: data.questionId }, function (err, like) {
                         if (err) console.log(err);
-
-                        var alreadyLiked = false;
+                        // standard
+                        var isLiked = false;
+                        // check in db if already liked
                         for (let i = 0; i < like.likes.length; i++) {
                             if(like.likes[i].likedBy == data.userId) {
-                                alreadyLiked = true;
+                                isLiked = true;
+                                // is already liked
                             }
                         }
-                        if(alreadyLiked == false) {
+                        if(isLiked == false) {
+                            // not yet liked
                             like.likes.push({
                                 likedBy: data.userId,
                             });
